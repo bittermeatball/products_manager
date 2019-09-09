@@ -9,21 +9,21 @@ ProductController::ProductController() {
 };
 
 void ProductController::showProducts() {
-    cout << "Show products";
+    cout << "Show products" << endl;
 }
 
 void ProductController::showCategories() {
-    cout << "Show products's list";
+    cout << "Show products's list" << endl;
 }
 
 void ProductController::find() {
-    cout << "This is the thing";
+    cout << "This is the thing" << endl;
 }
 
 void ProductController::destroy() {
-    cout << "Delete";
+    cout << "Delete" << endl;
 }
 
 void ProductController::destroy100() {
-    cout << "Delete 3000";
+    cout << "Delete 3000" << endl;
 }

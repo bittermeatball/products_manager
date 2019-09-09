@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
+#include <conio.h>
 #include "../../Controllers/ProductController.cpp"
+#include "../../Controllers/Helpers.cpp"
 
 using namespace std;
 
@@ -12,8 +14,13 @@ using namespace std;
 // step 5 : call ze menu again if "y", exit if "n"
 //
 //
+int showMenu();
 void navigator(int picked_work);
-
+//
+//
+//
+//
+//
 int showMenu() {
 
     int picked_work;
@@ -56,7 +63,9 @@ int showMenu() {
     navigator(picked_work);
 
 };
-
+//
+//
+//
 void navigator(int picked_work) {
 
     ProductController pc;
@@ -89,6 +98,7 @@ void navigator(int picked_work) {
         cout << "--------- | " << endl;
         cout << "--------- | " << "Nice !" << endl;
         cout << "--------- | " << endl;
+        clearScreen();
         showMenu();
     }
 

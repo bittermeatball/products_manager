@@ -1,13 +1,12 @@
 #include <iostream>
 #include <string>
 #include "Resources\Components\Menu.cpp"
-// #include "Controllers\ProductController.cpp"
 
 using namespace std;
-// using namespace ProductController;
 
 int main() {
 
+    clearScreen();
     showMenu();
 
     return 0;
