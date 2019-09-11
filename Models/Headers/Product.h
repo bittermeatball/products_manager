@@ -12,7 +12,7 @@ using namespace std; // string lives in the std class
             //
         private :
             int last_index;
-            string fillable[] = {
+            string fillable[8] = {
                 "id",
                 "name",
                 "unit",
@@ -22,6 +22,6 @@ using namespace std; // string lives in the std class
                 "price_per_unit",
                 "total"
             };
-    }
+    };
 
 #endif
