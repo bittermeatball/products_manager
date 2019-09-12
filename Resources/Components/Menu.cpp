@@ -50,7 +50,7 @@ int showMenu() {
     // Get user's choice of work
     cout << "Type in the work's index number : ";
     cin >> picked_work;
-
+    // If user chooses the wrong index
     if (picked_work > n || picked_work < 1) {
         cout << endl << "Invalid input ! | Work not found ! | Please choose from 1 - " << n << endl << endl;
         showMenu();
