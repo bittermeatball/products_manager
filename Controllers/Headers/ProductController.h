@@ -7,6 +7,7 @@
             // Constructor
             ProductController();
             //
+            void createProduct();
             void showProducts();
             void showCategories();
             void find();

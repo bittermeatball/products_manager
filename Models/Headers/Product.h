@@ -8,20 +8,20 @@ using namespace std; // string lives in the std class
         public :
             // Constructor
             Product();
-            void create();
             //
+            void read();
         private :
             int last_index;
-            string fillable[] = {
-                "id",
-                "name",
-                "unit",
-                "created_at",
-                "manufacter",
-                "quantity",
-                "price_per_unit",
-                "total"
-            };
-    }
+            // string fillable[] = {
+            //     "id",
+            //     "name",
+            //     "unit",
+            //     "created_at",
+            //     "manufacter",
+            //     "quantity",
+            //     "price_per_unit",
+            //     "total"
+            // };
+    };
 
 #endif

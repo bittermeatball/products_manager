@@ -3,7 +3,7 @@
 #include <conio.h>
 #include "../../Controllers/ProductController.cpp"
 #include "../../Controllers/Helpers.cpp"
-
+#include "../../Models/Product.cpp"
 using namespace std;
 
 //
@@ -14,23 +14,24 @@ using namespace std;
 // step 5 : call ze menu again if "y", exit if "n"
 //
 //
-int showMenu();
+void showMenu();
 void navigator(int picked_work);
 //
 //
 //
 //
 //
-int showMenu() {
+void showMenu() {
 
     int picked_work;
     
     cout << "Choose your work :" << endl;
 
     // Create work list, change n if you add more works
-    const int n = 5;
+    const int n = 6;
 
     string works_list[n] = {
+        "Create a Product",
         "Show products list",
         "Show products's categories list",
         "Find a product",
@@ -50,6 +51,12 @@ int showMenu() {
     // Get user's choice of work
     cout << "Type in the work's index number : ";
     cin >> picked_work;
+
+    // Clear the error in case of an invalid input
+    cin.clear(); 
+    // Take the error in the buffer out , Ask nigga tú if you don't know what the fuckery is this
+    cin.ignore();
+    
     // If user chooses the wrong index
     if (picked_work > n || picked_work < 1) {
         cout << endl << "Invalid input ! | Work not found ! | Please choose from 1 - " << n << endl << endl;
@@ -67,26 +74,27 @@ int showMenu() {
 //
 //
 void navigator(int picked_work) {
-
     ProductController pc;
     char do_continue;
-
     // Proceed user's option
     switch (picked_work)
     {
-        case 1:
-            pc.showProducts();
+        case 1: 
+            pc.createProduct();
             break;
         case 2:
-            pc.showCategories();
+            pc.showProducts();
             break;
         case 3:
-            pc.find();
+            pc.showCategories();
             break;
         case 4:
-            pc.destroy();
+            pc.find();
             break;
         case 5:
+            pc.destroy();
+            break;
+        case 6:
             pc.destroy100();
             break;
     }
