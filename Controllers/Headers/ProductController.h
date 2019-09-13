@@ -8,6 +8,7 @@
             ProductController();
             //
             void showProducts();
+            void createProduct();
             void showCategories();
             void find();
             void destroy();

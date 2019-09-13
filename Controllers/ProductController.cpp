@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include "Headers\ProductController.h"
+#include "Headers/ProductController.h"
+#include "../Models/Product.cpp"
 
 using namespace std;
 
@@ -9,7 +10,14 @@ ProductController::ProductController() {
 };
 
 void ProductController::showProducts() {
-    cout << "Show products" << endl;
+    Product p;
+    cout << endl << "Here are the products available : " << endl;
+    p.all();
+}
+
+void ProductController::createProduct() {
+    Product p;
+    p.create();
 }
 
 void ProductController::showCategories() {

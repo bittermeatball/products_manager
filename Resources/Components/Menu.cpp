@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
-#include <conio.h>
 #include "../../Controllers/ProductController.cpp"
-#include "../../Controllers/Helpers.cpp"
+#include "../../Controllers/Headers/Helpers.h"
 
 using namespace std;
 
@@ -14,24 +13,32 @@ using namespace std;
 // step 5 : call ze menu again if "y", exit if "n"
 //
 //
-int showMenu();
+Helpers help;
+void showMenu();
 void navigator(int picked_work);
 //
 //
 //
+// Guide for adding more work :
+// Change n in showMenu
+// Add work's name in the works_list
+// Add more case in the navigator
 //
 //
-int showMenu() {
+void showMenu() {
+
+    help.clearScreen();
 
     int picked_work;
     
     cout << "Choose your work :" << endl;
 
     // Create work list, change n if you add more works
-    const int n = 5;
+    const int n = 6;
 
     string works_list[n] = {
         "Show products list",
+        "Add new product",
         "Show products's categories list",
         "Find a product",
         "Delete a product",
@@ -78,15 +85,18 @@ void navigator(int picked_work) {
             pc.showProducts();
             break;
         case 2:
-            pc.showCategories();
+            pc.createProduct();
             break;
         case 3:
-            pc.find();
+            pc.showCategories();
             break;
         case 4:
-            pc.destroy();
+            pc.find();
             break;
         case 5:
+            pc.destroy();
+            break;
+        case 6:
             pc.destroy100();
             break;
     }
@@ -98,7 +108,7 @@ void navigator(int picked_work) {
         cout << "--------- | " << endl;
         cout << "--------- | " << "Nice !" << endl;
         cout << "--------- | " << endl;
-        clearScreen();
+        help.clearScreen();
         showMenu();
     }
 
