@@ -13,10 +13,9 @@ using namespace std;
 // step 5 : call ze menu again if "y", exit if "n"
 //
 //
-Helpers help;
+Helpers help; // Get help functions
 void showMenu();
 void navigator(int picked_work);
-//
 //
 //
 // Guide for adding more work :

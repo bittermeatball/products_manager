@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
-#include "Headers/Helpers.h"
 #include <stdio.h>
 #include <conio.h>
 #include <time.h>
+#include "Headers/Helpers.h"
 
 using namespace std;
 
@@ -37,7 +37,7 @@ string Helpers::now() {
     return fixed;
 }
 
-string str_replace(string str,string pre,string pos) {
+string Helpers::str_replace(string str,string pre,string pos) {
     // Replace space with underscore
     int length = str.size();
     int x = 0;
@@ -47,7 +47,7 @@ string str_replace(string str,string pre,string pos) {
         if (letter == pre) {
         letter = pos;}
         fixed = fixed + letter;
-        x = x + 1;
+        x++;
     }
     return fixed;
 }

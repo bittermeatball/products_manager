@@ -51,23 +51,29 @@ void Product::create() {
     int price_per_unit;
     int total;
     //
-    
+    cin.ignore(); // Ignore the first NULL character
+
     cout << "Enter product's name : " << endl;
-    cin.ignore();
     getline(cin,product);
     product = p.str_replace(product," ","_");
     //
     cout << "Enter product's type : " << endl;
-    cin >> type;
+    getline(cin,type);
+    type = p.str_replace(type," ","_");
+    //
     cout << "Enter product's manufacter : " << endl;
-    cin >> manufacter;
+    getline(cin,manufacter);
+    manufacter = p.str_replace(manufacter," ","_");
+    //
     cout << "Enter charge unit : " << endl;
-    cin >> unit;    
-    cout << "Enter product's quantity : " << endl;
+    cin >> unit;
+    //
+    cout << "Enter product's quantity (number only) : " << endl;
     cin >> quantity;
-    cout << "Enter product's price per unit : " << endl;
+    //
+    cout << "Enter product's price per unit (number only) : " << endl;
     cin >> price_per_unit;
-
+    //
     created_at = p.now(); // Helpers's function
     total = price_per_unit*quantity;
 
