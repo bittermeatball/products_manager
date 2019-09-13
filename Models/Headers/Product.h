@@ -9,7 +9,10 @@ using namespace std; // string lives in the std class
             // Constructor
             Product();
             //
+            void create();
             void read();
+            void destroy();
+            
         private :
             int last_index;
             // string fillable[] = {
