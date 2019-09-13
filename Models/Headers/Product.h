@@ -12,7 +12,7 @@ using namespace std; // string lives in the std class
             void create();
             void read();
             void destroy();
-            
+            void destroy100();
         private :
             int last_index;
             // string fillable[] = {

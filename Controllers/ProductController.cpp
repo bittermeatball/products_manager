@@ -1,44 +1,20 @@
 #include <iostream>
-#include <fstream>
-#include <string>
 #include "Headers\ProductController.h"
-
+#include "../Models/Headers/Product.h"
 using namespace std;
 
 ProductController::ProductController() {
     // Contrustor function
 };
 void ProductController::createProduct() {
+    Product pc;
     cout << "Creating Product" << endl;
-    string name ,manufacter;
-    int quantity, price_per_unit;
-    int total;
-
-    // open a file in append mode.
-    ofstream file;
-    file.open("db.dat", ios::app);
-
-    cout << "Enter your supply name: "; 
-    getline(cin, name);
-
-    cout << "Enter the quantity of your supply:  "; 
-    cin >> quantity;
-    cin.ignore();
-
-    cout << "Enter the price per unit of your supply:  "; 
-    cin >> price_per_unit;
-    cin.ignore();
-
-    total = quantity*price_per_unit;
-    cout << "Enter the supply's manufacter: "; 
-    getline(cin, manufacter);
-
-
-    // write inputted data into the file.
-    file << name << "    " << quantity << "    " << manufacter << "    " << total << endl;
+    pc.create();
 }
 void ProductController::showProducts() {
+    Product pc;
     cout << "Show products" << endl;
+    pc.read();
 }
 
 void ProductController::showCategories() {
@@ -50,9 +26,13 @@ void ProductController::find() {
 }
 
 void ProductController::destroy() {
+    Product pc;
     cout << "Delete" << endl;
+    pc.destroy();
 }
 
 void ProductController::destroy100() {
+    Product pc;
     cout << "Delete 3000" << endl;
+    pc.destroy100();
 }

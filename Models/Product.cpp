@@ -97,3 +97,36 @@ void Product::destroy() {
     remove("./Database/db.dat");
     rename("./Database/newdb.dat", "./Database/db.dat");
 }
+// Dunt worry , imma move this to Helper soon
+int findProductQuantity(string a) {
+    int firstSpace = a.find(' ');
+    string removefirst = a.erase(0, firstSpace+1);
+    int quantity = stoi(a.substr(0, a.find(' ')));
+    cout << quantity;
+    return quantity;
+}
+void Product::destroy100() {
+    string newData;
+    ofstream newFile;
+    ifstream file;
+
+    newFile.open("./Database/newdb.dat");
+    file.open("./Database/db.dat");
+
+        if (file.is_open())
+        {   
+            // Read each line in the database
+            while ( getline (file,newData) )
+                {
+                    if(findProductQuantity(newData) < 100) {
+                        newFile << newData << endl;
+                    }
+                }
+        }
+        else cout << "Unable to open file";
+
+    file.close();
+    newFile.close();
+    remove("./Database/db.dat");
+    rename("./Database/newdb.dat", "./Database/db.dat");
+}
