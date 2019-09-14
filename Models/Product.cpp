@@ -19,7 +19,7 @@ void Product::create() {
     // open a file in append mode.
     ofstream file;
 
-    file.open("./Database/db.dat", ios::app);
+    file.open("Database/db.dat", ios::app);
     if (file.is_open())
         {
             cout << "Enter your product name: "; 
@@ -52,7 +52,7 @@ void Product::read() {
     int i=1;
     //
     ifstream file;
-    file.open("./Database/db.dat");
+    file.open("Database/db.dat");
     //
     if (file.is_open()){
             while ( getline (file,data) ){
@@ -76,8 +76,8 @@ void Product::destroy() {
     ofstream newFile;
     ifstream file;
     //
-    newFile.open("./Database/newdb.dat");
-    file.open("./Database/db.dat");
+    newFile.open("Database/newdb.dat");
+    file.open("Database/db.dat");
 
         if (file.is_open())
         {   
@@ -101,8 +101,8 @@ void Product::destroy() {
     file.close();
     newFile.close();
     //
-    remove("./Database/db.dat");
-    rename("./Database/newdb.dat", "./Database/db.dat");
+    remove("Database/db.dat");
+    rename("Database/newdb.dat", "Database/db.dat");
 }
 
 void Product::destroy100() {
@@ -112,8 +112,8 @@ void Product::destroy100() {
     ofstream newFile;
     ifstream file;
     //
-    newFile.open("./Database/newdb.dat");
-    file.open("./Database/db.dat");
+    newFile.open("Database/newdb.dat");
+    file.open("Database/db.dat");
 
         if (file.is_open()){   
             // Read each line in the database
@@ -129,6 +129,37 @@ void Product::destroy100() {
 
     file.close();
     newFile.close();
-    remove("./Database/db.dat");
-    rename("./Database/newdb.dat", "./Database/db.dat");
+    remove("Database/db.dat");
+    rename("Database/newdb.dat", "Database/db.dat");
+}
+void Product::find() {
+    string findData, data;
+    int match=0;
+    //
+    cout << "Please type in the name of your product that you want to find: " << "\n";
+    getline(cin,findData);
+    //
+    ifstream file;
+    //
+    file.open("Database/db.dat");
+
+        if (file.is_open())
+        {   
+            // Read each line in the database
+            while ( getline (file,data) ) {
+                    // Take the first word in one line ( Product Name ) and compare it with the word you want to delete
+                    if(data.substr(0, data.find(' ')) == findData) {
+                        cout << "We found one product with that name" << endl;
+                        cout << data << endl << endl;
+                        match++;
+                    }
+                }
+            if(match == 0) {
+                cout << endl<< endl<< endl<< "Sorry, but we did not find any products with that name" << endl << endl << endl;
+            }
+        }
+        else cout << "Unable to open file";
+    //
+    file.close();
+    //
 }

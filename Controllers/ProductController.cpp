@@ -21,7 +21,8 @@ void ProductController::showCategories() {
 }
 
 void ProductController::find() {
-
+    Product pc;
+    pc.find();
 }
 
 void ProductController::destroy() {

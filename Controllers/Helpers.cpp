@@ -50,11 +50,44 @@ string Helpers::str_replace(string input,string pre,string pos) {
     }
     return fixed;
 }
-
+// Similar to find()
+int Helpers::findPosition(string str, string x) {
+    int i,j,k,pos;
+    // If you enter only one word
+    if(x.size() == 1) {
+        cout << str << endl;
+        for(i=0 ; i<str.size();i++) {
+            if(str[i] == x[0]) {
+                cout << "FUNCTION FOUND ONE WORD AT " << i << endl;
+                return i;
+            }
+        }
+    }
+    // If you enter more than one word
+        for(i=0; i<str.size();i++) {
+            j=0;
+            // First word match
+            if(str[i] == x[j]) {
+                // Save the position of that word
+                pos = i;
+                // Loops through the word that needs searching
+                for(k=0;k<x.size();k++) {
+                    // If every letter is the same increase i
+                    if(str[i] == x[k]) {
+                        i++;
+                    }
+                    // 
+                    if(i-pos == x.size()) {
+                        return pos;
+                    }
+                }
+            }
+        }
+    return 0;
+}
 int Helpers::findProductQuantity(string input) {
-    int firstSpace = input.find(' ');
+    int firstSpace = this->findPosition(input, " ");
     string removefirst = input.erase(0, firstSpace+1);
     int quantity = stoi(input.substr(0, input.find(' ')));
-    cout << quantity;
     return quantity;
 }
