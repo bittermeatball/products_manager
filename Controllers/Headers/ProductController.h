@@ -7,8 +7,8 @@
             // Constructor
             ProductController();
             //
-            void createProduct();
             void showProducts();
+            void createProduct();
             void showCategories();
             void find();
             void destroy();

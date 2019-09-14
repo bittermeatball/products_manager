@@ -4,6 +4,8 @@
 #include "../../Controllers/ProductController.cpp"
 #include "../../Controllers/Helpers.cpp"
 #include "../../Models/Product.cpp"
+// Remember to put CPP file in here for it to complie , you can avoid Undefined Reference error
+
 using namespace std;
 
 //
@@ -14,6 +16,8 @@ using namespace std;
 // step 5 : call ze menu again if "y", exit if "n"
 //
 //
+Helpers help_menu;
+
 void showMenu();
 void navigator(int picked_work);
 //
@@ -22,6 +26,7 @@ void navigator(int picked_work);
 //
 //
 void showMenu() {
+    help_menu.clearScreen();
 
     int picked_work;
     
@@ -106,7 +111,7 @@ void navigator(int picked_work) {
         cout << "--------- | " << endl;
         cout << "--------- | " << "Nice !" << endl;
         cout << "--------- | " << endl;
-        clearScreen();
+        help_menu.clearScreen();
         showMenu();
     }
 
