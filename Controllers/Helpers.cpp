@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <conio.h>
 #include <time.h>
+#include <stdlib.h>
+#include <windows.h>
 #include "Headers/Helpers.h"
 
 using namespace std;
@@ -13,9 +15,10 @@ Helpers::Helpers() {
 
 void Helpers::clearScreen() {
     // Clear the ugly screen !
-    int n;
-    for (n = 0; n < 10; n++)
-        printf( "\n\n\n\n\n\n\n\n\n\n" );
+    // int n;
+    // for (n = 0; n < 10; n++)
+    //     printf( "\n\n\n\n\n\n\n\n\n\n" );
+    if (system("CLS")) system("clear");
 }
 
 string Helpers::now() {
@@ -50,4 +53,9 @@ string Helpers::str_replace(string str,string pre,string pos) {
         x++;
     }
     return fixed;
+}
+
+void Helpers::set_color(int color_code) {
+    Helpers help;
+    SetConsoleTextAttribute(help.color, color_code);
 }

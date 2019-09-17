@@ -21,7 +21,7 @@ void ProductController::createProduct() {
 }
 
 void ProductController::showCategories() {
-    cout << "Show products's list" << endl;
+    cout << "Show products's listabc" << endl;
 }
 
 void ProductController::find() {

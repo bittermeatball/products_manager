@@ -6,8 +6,7 @@
 using namespace std;
 
 int main() {
-    
+    help.clearScreen();
     showMenu();
-
     return 0;
 }

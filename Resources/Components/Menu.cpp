@@ -26,10 +26,9 @@ void navigator(int picked_work);
 //
 void showMenu() {
 
-    help.clearScreen();
-
     int picked_work;
     
+    help.set_color(10);
     cout << "Choose your work :" << endl;
 
     // Create work list, change n if you add more works
@@ -45,6 +44,7 @@ void showMenu() {
     };
 
     // Create beautiful index
+    help.set_color(7);
     for ( int i = 0 ; i < n ; i++ ) {
         cout << i + 1 << " | ";
         for ( int j = 0 ; j < 70 - works_list[i].length() ; j++ ) {
@@ -54,18 +54,20 @@ void showMenu() {
     }
 
     // Get user's choice of work
+    help.set_color(6);
     cout << "Type in the work's index number : ";
     cin >> picked_work;
 
     if (picked_work > n || picked_work < 1) {
+        help.clearScreen();
+        help.set_color(4);
         cout << endl << "Invalid input ! | Work not found ! | Please choose from 1 - " << n << endl << endl;
         showMenu();
     }
     // else
-    cout << "--------- | " << endl;
+    help.set_color(10);
     cout << "--------- | " << works_list[picked_work - 1] << " | ---------" << endl; // Print picked work
-    cout << "--------- | " << endl;
-
+    help.set_color(7);
     navigator(picked_work);
 
 };
