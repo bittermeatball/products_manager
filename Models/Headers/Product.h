@@ -16,16 +16,16 @@ using namespace std; // string lives in the std class
             void find();
         private :
             int last_index;
-            // string fillable[] = {
-            //     "id",
-            //     "name",
-            //     "unit",
-            //     "created_at",
-            //     "manufacter",
-            //     "quantity",
-            //     "price_per_unit",
-            //     "total"
-            // };
+            string fillable[8] = {
+                "id",
+                "name",
+                "unit",
+                "created_at",
+                "manufacter",
+                "quantity",
+                "price_per_unit",
+                "total"
+            };
     };
 
 #endif

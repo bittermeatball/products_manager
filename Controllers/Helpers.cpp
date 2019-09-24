@@ -55,10 +55,8 @@ int Helpers::findPosition(string str, string x) {
     int i,j,k,pos;
     // If you enter only one word
     if(x.size() == 1) {
-        cout << str << endl;
         for(i=0 ; i<str.size();i++) {
             if(str[i] == x[0]) {
-                cout << "FUNCTION FOUND ONE WORD AT " << i << endl;
                 return i;
             }
         }
@@ -88,6 +86,6 @@ int Helpers::findPosition(string str, string x) {
 int Helpers::findProductQuantity(string input) {
     int firstSpace = this->findPosition(input, " ");
     string removefirst = input.erase(0, firstSpace+1);
-    int quantity = stoi(input.substr(0, input.find(' ')));
+    int quantity = stoi(input.substr(0, input.find(" ")));
     return quantity;
 }

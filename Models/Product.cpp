@@ -9,7 +9,7 @@ using namespace std;
 Helpers help_product;
 
 Product::Product() {
-
+    // Constructor
 }
 void Product::create() {
     string name ,manufacter, created_at, type;
@@ -37,11 +37,11 @@ void Product::create() {
             total = quantity*price_per_unit;
             cout << "Enter the product's manufacter: "; 
             getline(cin, manufacter);
-            manufacter = help_product.str_replace(name, " ", "_");
+            manufacter = help_product.str_replace(manufacter, " ", "_");
             //
             // write inputted data into the file.
             file << name << " " << quantity << " " << manufacter << " " << total << endl;
-            cout << "Writing to File";
+            cout << "Writing to File" << endl;
         }
         else cout << "Unable to open file";
     file.close();
@@ -79,21 +79,23 @@ void Product::destroy() {
     newFile.open("Database/newdb.dat");
     file.open("Database/db.dat");
 
-        if (file.is_open())
-        {   
+        if (file.is_open()){   
             // Read each line in the database
             while ( getline (file,newData) ) {
                     // Take the first word in one line ( Product Name ) and compare it with the word you want to delete
-                    if(newData.substr(0, newData.find(' ')) != deleteData) {
-                        // Write the into new File if the first product is not the product which is supposed to be deleted
-                        newFile << newData << endl;
+                    if(newData.substr(0, help_product.findPosition(newData," ")) == deleteData) {
+                        match++;
                     }
                     else {
-                        match++;
+                        // Write the into new File if the first product is not the product which is supposed to be deleted
+                        newFile << newData << endl;
                     }
                 }
             if(match == 0) {
                 cout << "Sorry, but we did not find any products with that name" << endl;
+            }
+            else {
+                cout << "Deleted Successfully!" << endl;
             }
         }
         else cout << "Unable to open file";
@@ -132,6 +134,7 @@ void Product::destroy100() {
     remove("Database/db.dat");
     rename("Database/newdb.dat", "Database/db.dat");
 }
+
 void Product::find() {
     string findData, data;
     int match=0;
@@ -148,14 +151,16 @@ void Product::find() {
             // Read each line in the database
             while ( getline (file,data) ) {
                     // Take the first word in one line ( Product Name ) and compare it with the word you want to delete
-                    if(data.substr(0, data.find(' ')) == findData) {
-                        cout << "We found one product with that name" << endl;
+                    if(data.substr(0, help_product.findPosition(data," ")) == findData) {
                         cout << data << endl << endl;
                         match++;
                     }
                 }
             if(match == 0) {
                 cout << endl<< endl<< endl<< "Sorry, but we did not find any products with that name" << endl << endl << endl;
+            }
+            else {
+                cout << "We found " << match << " product with that name" << endl;
             }
         }
         else cout << "Unable to open file";
