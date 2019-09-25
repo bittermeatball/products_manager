@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <time.h>
+#include <stdlib.h>
 #include "Headers/Helpers.h"
 
 using namespace std;
@@ -11,9 +12,10 @@ Helpers::Helpers() {
 void Helpers::clearScreen()
 {
     // Clear the ugly screen !
-    int n;
-    for (n = 0; n < 10; n++)
-        cout << endl << endl << endl << endl;
+    // int n;
+    // for (n = 0; n < 10; n++)
+    //     cout << endl << endl << endl << endl;
+    if (system("CLS")) system("clear");
 }
 string Helpers::now() {
     // Get the time
@@ -51,7 +53,7 @@ string Helpers::str_replace(string input,string pre,string pos) {
     return fixed;
 }
 // Similar to find()
-int Helpers::findPosition(string str, string x) {
+int Helpers::str_find(string str, string x) {
     int i,j,k,pos;
     // If you enter only one word
     if(x.size() == 1) {
@@ -84,7 +86,7 @@ int Helpers::findPosition(string str, string x) {
     return 0;
 }
 int Helpers::findProductQuantity(string input) {
-    int firstSpace = this->findPosition(input, " ");
+    int firstSpace = this->str_find(input, " ");
     string removefirst = input.erase(0, firstSpace+1);
     int quantity = stoi(input.substr(0, input.find(" ")));
     return quantity;

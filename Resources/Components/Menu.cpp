@@ -59,7 +59,7 @@ void showMenu() {
 
     // Clear the error in case of an invalid input
     cin.clear(); 
-    // Take the error in the buffer out , Ask nigga tú if you don't know what the fuckery is this
+    // Take the error in the buffer out
     cin.ignore();
     
     // If user chooses the wrong index
@@ -105,7 +105,8 @@ void navigator(int picked_work) {
     }
     
     // Choose whether continue the program or not
-    cout << "Do you want to continue the program ? (y/n)" << endl;
+    cout << "Do you want to continue the program ? (y)" << endl;
+    cout << "Press any keys else to exit the program." << endl;
     cin >> do_continue;
     if (do_continue == 'y' || do_continue == 'Y') {
         cout << "--------- | " << endl;

@@ -34,13 +34,19 @@ void Product::create() {
             cin >> price_per_unit;
             cin.ignore();
             //
+            cout << "Enter product's type : ";
+            getline(cin,type);
+            type = help_product.str_replace(type," ","_");
+            //
             total = quantity*price_per_unit;
             cout << "Enter the product's manufacter: "; 
             getline(cin, manufacter);
             manufacter = help_product.str_replace(manufacter, " ", "_");
             //
+            created_at = help_product.now(); // Helpers's function
+
             // write inputted data into the file.
-            file << name << " " << quantity << " " << manufacter << " " << total << endl;
+            file << name << " " << quantity << " " << type << " " <<manufacter << " " << price_per_unit << " " << total << " " << created_at << endl;
             cout << "Writing to File" << endl;
         }
         else cout << "Unable to open file";
@@ -57,6 +63,7 @@ void Product::read() {
     if (file.is_open()){
             while ( getline (file,data) ){
                 cout << "Supply number " << i << endl;
+                data=help_product.str_replace(data,"_"," ");
                 cout << data << endl << endl;
                 i++;
             }
@@ -72,6 +79,7 @@ void Product::destroy() {
     //
     cout << "Please type in the name of your product that you want to delete: " << "\n";
     getline(cin,deleteData);
+    deleteData = help_product.str_replace(deleteData, " ", "_");
     //
     ofstream newFile;
     ifstream file;
@@ -83,7 +91,7 @@ void Product::destroy() {
             // Read each line in the database
             while ( getline (file,newData) ) {
                     // Take the first word in one line ( Product Name ) and compare it with the word you want to delete
-                    if(newData.substr(0, help_product.findPosition(newData," ")) == deleteData) {
+                    if(newData.substr(0, help_product.str_find(newData," ")) == deleteData) {
                         match++;
                     }
                     else {
@@ -141,6 +149,8 @@ void Product::find() {
     //
     cout << "Please type in the name of your product that you want to find: " << "\n";
     getline(cin,findData);
+    findData = help_product.str_replace(findData, " ", "_");
+    cout << findData;
     //
     ifstream file;
     //
@@ -151,7 +161,7 @@ void Product::find() {
             // Read each line in the database
             while ( getline (file,data) ) {
                     // Take the first word in one line ( Product Name ) and compare it with the word you want to delete
-                    if(data.substr(0, help_product.findPosition(data," ")) == findData) {
+                    if(data.substr(0, help_product.str_find(data," ")) == findData) {
                         cout << data << endl << endl;
                         match++;
                     }
@@ -160,7 +170,7 @@ void Product::find() {
                 cout << endl<< endl<< endl<< "Sorry, but we did not find any products with that name" << endl << endl << endl;
             }
             else {
-                cout << "We found " << match << " product with that name" << endl;
+                cout << "We found " << match << " product with that name" << endl << endl;
             }
         }
         else cout << "Unable to open file";
