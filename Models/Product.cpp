@@ -46,7 +46,7 @@ void Product::create() {
             created_at = help_product.now(); // Helpers's function
 
             // write inputted data into the file.
-            file << name << " " << quantity << " " << type << " " <<manufacter << " " << price_per_unit << " " << total << " " << created_at << endl;
+            file << name << " " << quantity << " " << type << " " <<manufacter << " " << price_per_unit << " " << total << " " << created_at;
             cout << "Writing to File" << endl;
         }
         else cout << "Unable to open file";
@@ -150,7 +150,6 @@ void Product::find() {
     cout << "Please type in the name of your product that you want to find: " << "\n";
     getline(cin,findData);
     findData = help_product.str_replace(findData, " ", "_");
-    cout << findData;
     //
     ifstream file;
     //
@@ -162,6 +161,7 @@ void Product::find() {
             while ( getline (file,data) ) {
                     // Take the first word in one line ( Product Name ) and compare it with the word you want to delete
                     if(data.substr(0, help_product.str_find(data," ")) == findData) {
+                        data = help_product.str_replace(data, "_", " ");
                         cout << data << endl << endl;
                         match++;
                     }
