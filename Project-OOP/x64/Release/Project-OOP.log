@@ -1,0 +1,13 @@
+﻿  Helpers.cpp
+D:\School\Thiet ke giai thuat\New branch\products_manager-sub2pewds\Project-OOP\Helpers.cpp(45,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\School\Thiet ke giai thuat\New branch\products_manager-sub2pewds\Project-OOP\Helpers.cpp(60,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\School\Thiet ke giai thuat\New branch\products_manager-sub2pewds\Project-OOP\Helpers.cpp(76,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Product.cpp
+  ProductController.cpp
+  Source.cpp
+  Menu.cpp
+D:\School\Thiet ke giai thuat\New branch\products_manager-sub2pewds\Project-OOP\Helpers.cpp(77,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+Menu.obj : error LNK2005: "class Helpers help_menu" (?help_menu@@3VHelpers@@A) already defined in Source.obj
+Source.obj : error LNK2005: "void __cdecl navigator(int)" (?navigator@@YAXH@Z) already defined in Source.obj
+Source.obj : error LNK2005: "void __cdecl showMenu(void)" (?showMenu@@YAXXZ) already defined in Source.obj
+D:\School\Thiet ke giai thuat\New branch\products_manager-sub2pewds\x64\Release\Project-OOP.exe : fatal error LNK1169: one or more multiply defined symbols found
