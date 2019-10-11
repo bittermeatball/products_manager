@@ -127,7 +127,6 @@
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="ProductController.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Helpers.h" />

@@ -7,21 +7,10 @@
 
 using namespace std;
 
-//
-// step 1 : show ze menu
-// step 2 : with, ze menu, get user's choice
-// step 3 : proceed with ze navigator
-// step 4 : ask for repeat ?
-// step 5 : call ze menu again if "y", exit if "n"
-//
-//
 Helpers help_menu;
 
 void showMenu();
 void navigator(int picked_work);
-//
-//
-//
 //
 //
 void showMenu() {
@@ -104,8 +93,7 @@ void navigator(int picked_work) {
 	}
 
 	// Choose whether continue the program or not
-	cout << "Do you want to continue the program ? (y)" << endl;
-	cout << "Press any keys else to exit the program." << endl;
+	cout << "Do you want to continue the program ? (y/n)" << endl;
 	cin >> do_continue;
 	if (do_continue == 'y' || do_continue == 'Y') {
 		cout << "--------- | " << endl;
