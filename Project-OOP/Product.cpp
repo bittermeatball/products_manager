@@ -19,7 +19,7 @@ void Product::create() {
 	// open a file in append mode.
 	ofstream file;
 
-	file.open("Database/db.dat", ios::app);
+	file.open("db.dat", ios::app);
 	if (file.is_open())
 	{
 		cout << "Enter your product name: ";
@@ -43,10 +43,9 @@ void Product::create() {
 		getline(cin, manufacter);
 		manufacter = help_product.str_replace(manufacter, " ", "_");
 		//
-		created_at = help_product.now(); // Helpers's function
 
 		// write inputted data into the file.
-		file << name << " " << quantity << " " << type << " " << manufacter << " " << price_per_unit << " " << total << " " << created_at;
+		file << name << " " << quantity << " " << type << " " << manufacter << " " << price_per_unit << " " << total << endl;
 		cout << "Writing to File" << endl;
 	}
 	else cout << "Unable to open file";
@@ -58,7 +57,7 @@ void Product::read() {
 	int i = 1;
 	//
 	ifstream file;
-	file.open("Database/db.dat");
+	file.open("db.dat");
 	//
 	if (file.is_open()) {
 		while (getline(file, data)) {
