@@ -35,8 +35,8 @@ void Menu() {
 	file.open("db.txt");
 	// Load dữ liệu trong file vào mảng
 	if (file.is_open()) {
-		while (file >> MaVatTu >> TenVatTu >> LoaiVatTu >> DonViTinh >> NgayNhap >> NhaSanXuat >> SoLuong >> DonGia >> ThanhTien) {
-			A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien, HienThiElement(A));
+		while (file >> MaVatTu >> TenVatTu >> LoaiVatTu >> DonViTinh >> NhaSanXuat >> SoLuong >> DonGia >> ThanhTien >> NgayNhap) {
+			A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
 		}
 	}
 	else cout << "Unable to open file";
@@ -188,9 +188,9 @@ void Menu() {
 							ThanhTien = ceilf((DonGia * SoLuong) * 0.2);
 						}
 						// Thêm vào file
-						file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NgayNhap << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << endl;
+						file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << NgayNhap;
 						// Thêm vào list
-						A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien, HienThiElement(A));
+						A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
 					}
 					file.close();
 					break;
@@ -275,9 +275,9 @@ void Menu() {
 							ThanhTien = ceilf((DonGia * SoLuong) * 0.2);
 						}
 						// Thêm vào file
-						file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NgayNhap << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << endl;
+						file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << NgayNhap;
 						// Thêm vào list
-						A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien, HienThiElement(A));
+						A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
 					}
 					file.close();
 					A.SapXepTheoSoLuong(ascending);
@@ -620,6 +620,13 @@ void Menu() {
 	} while (choice == "Y" || choice == "y");
 }
 int main() {
+	// current date/time based on current system
+	time_t now = time(0);
+
+	// convert now to string form
+	char* dt = ctime(&now);
+
+	cout << "The local date and time is: " << dt << endl;
 	Menu();
 	return 0;
 }

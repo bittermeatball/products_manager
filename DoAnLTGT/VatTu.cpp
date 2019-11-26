@@ -68,11 +68,11 @@ void VatTu::HienThiVatTu()
 	cout << "Ma vat tu: " << MaVatTu << endl;
 	cout << "Ten vat tu: " << TenVatTu << endl;
 	cout << "Loai vat tu: " << LoaiVatTu << endl;
-	cout << "Ngay nhap vat tu: " << NgayNhap << endl;
 	cout << "Nha san xuat: " << NhaSanXuat << endl;
 	cout << "So luong vat tu: " << SoLuong << endl;
 	cout << "Don gia vat tu: " << DonGia << " ( " << DonViTinh << "/1 Vat Tu )" << endl;
-	cout << "Thanh tien: " << ThanhTien << " (" << DonViTinh << ") " << endl << endl << endl;
+	cout << "Thanh tien: " << ThanhTien << " (" << DonViTinh << ") " << endl;
+	cout << "Ngay nhap vat tu: " << NgayNhap << endl << endl;
 	cout << "____________________________________________________________" << endl << endl << endl;
 
 }

@@ -36,7 +36,7 @@ void List::HienThiList() {
 	}
 }
 // Hàm thêm
-void List::Them(string MaVatTu, string TenVatTu, string LoaiVatTu, string DonViTinh, string NgayNhap, string NhaSanXuat, int SoLuong, int DonGia, int ThanhTien, int vitri) {
+void List::Them(string MaVatTu, string TenVatTu, string LoaiVatTu, string DonViTinh, string NgayNhap, string NhaSanXuat, int SoLuong, int DonGia, int ThanhTien) {
 	this->PhanTu++;
 	// Khởi tạo một nhân viên mới thông qua hàm dựng đầy đủ tham số
 	VatTu VatTuMoi(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
@@ -53,17 +53,12 @@ void List::Them(string MaVatTu, string TenVatTu, string LoaiVatTu, string DonViT
 		VatTu* MangMoi = new VatTu[this->PhanTu];
 		int j = 0;
 		for (int i = 0; i < this->PhanTu; i++) {
-			// Tại điểm cần chèn, ta giảm chỉ số j của List để nó tiếp tục copy phần tử kế tiếp từ List vào mảng mới
-			if (i == vitri) {
-				*(MangMoi + i) = VatTuMoi;
-				j--;
+			if (i != this->PhanTu - 1) {
+				*(MangMoi + i) = *(this->DanhSachVatTu + i);
 			}
 			else {
-				if (j < this->PhanTu - 1) {
-					*(MangMoi + i) = *(this->DanhSachVatTu + j);
-				}
+				*(MangMoi + i) = VatTuMoi;
 			}
-			j++;
 		}
 		// Khởi tạo một list nhân viên mới để copy từ mảng mới qua
 		delete[]this->DanhSachVatTu;
@@ -316,11 +311,11 @@ void List::GhiVaoFile() {
 			newFile << (this->DanhSachVatTu + i)->LayTenVatTu() << " ";
 			newFile << (this->DanhSachVatTu + i)->LayLoaiVatTu() << " ";
 			newFile << (this->DanhSachVatTu + i)->LayDonViTinh() << " ";
-			newFile << (this->DanhSachVatTu + i)->LayNgayNhap() << " ";
 			newFile << (this->DanhSachVatTu + i)->LayNhaSanXuat() << " ";
 			newFile << (this->DanhSachVatTu + i)->LaySoLuong() << " ";
 			newFile << (this->DanhSachVatTu + i)->LayDonGia() << " ";
 			newFile << (this->DanhSachVatTu + i)->LayThanhTien() << " ";
+			newFile << (this->DanhSachVatTu + i)->LayNgayNhap();
 			newFile << endl;
 		}
 	}

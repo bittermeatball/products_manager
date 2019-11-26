@@ -15,7 +15,7 @@ public:
 	void HienThiList();
 	
 	// Hàm thêm
-	void Them(string, string, string, string, string, string, int, int, int, int);
+	void Them(string, string, string, string, string, string, int, int, int);
 	
 	// Hàm xóa
 	void XoaTheoMa(string);
