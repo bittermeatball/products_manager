@@ -21,6 +21,7 @@ public:
 	void XoaTheoMa(string);
 	void XoaTheoTen(string);
 	void XoaTheoLoai(string);
+	void XoaTren100();
 	
 	// Hàm tìm kiếm
 	void TimKiemTheoMa(string);

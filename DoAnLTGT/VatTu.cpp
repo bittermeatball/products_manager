@@ -74,11 +74,11 @@ void VatTu::HienThiVatTu()
 	cout << "Don gia vat tu: " << DonGia << " ( " << DonViTinh << "/1 Vat Tu )" << endl;
 	cout << "Thanh tien: " << ThanhTien << " (" << DonViTinh << ") " << endl << endl << endl;
 	cout << "____________________________________________________________" << endl << endl << endl;
+
 }
 
 // Hàm hủy
 VatTu::~VatTu() {
-	cout << "Ham huy vat tu duoc goi" << endl;
 }
 
 // Hàm đa năng hóa

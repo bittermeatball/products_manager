@@ -52,12 +52,26 @@ void Menu() {
 		cout << "6. Thoat chuong trinh" << endl;
 		cout << "____________________________________________________________" << endl;
 		cout << "Hay chon cong viec:" << endl;
-		cout << "Thanos>";
 		//
 		int menu;
-		cin >> menu;
-		cin.ignore(1);
-		cin.clear();
+		// Menu Choice
+		do {
+			try {
+				cout << "User>";
+				cin >> menu;
+				if (cin.fail() || menu < 0 || menu > 6) {
+					throw string("Khong hop le , vui long nhap lai! \n");
+				}
+				cin.clear();
+				cin.ignore(10000, '\n');
+				break;
+			}
+			catch (string error) {
+				cin.clear();
+				cin.ignore(10000, '\n');
+				cout << error;
+			}
+		} while (true);
 		//
 		switch (menu)
 		{
@@ -65,14 +79,28 @@ void Menu() {
 			{
 				system("cls");
 				cout << "1. Them vat tu vao khong sap xep" << endl;
-				cout << "2. Them vat tu vao co sap xep" << endl;
+				cout << "2. Them vat tu vao co sap xep theo so luong" << endl;
 				cout << "3. Thoat cong viec" << endl;
 				cout << "____________________________________________________________" << endl;
 				//
 				int submenu1;
-				cin >> submenu1;
-				cin.ignore(1);
-				cin.clear();
+				do {
+					try {
+						cout << "User>";
+						cin >> submenu1;
+						if (cin.fail() || submenu1 < 0 || submenu1 > 3) {
+							throw string("Khong hop le , vui long nhap lai! \n");
+						}
+						cin.clear();
+						cin.ignore(10000, '\n');
+						break;
+					}
+					catch (string error) {
+						cin.clear();
+						cin.ignore(10000, '\n');
+						cout << error;
+					}
+				} while (true);
 
 				switch (submenu1) {
 				case 1: // 1.1) Không sắp xếp sau khi thêm
@@ -81,47 +109,69 @@ void Menu() {
 					file.open("db.txt", ios::app);
 					if (file.is_open()) {
 						cout << "Nhap vao thong tin vat tu can them" << endl;
-						// 
+						// Mã vật tư
 						cout << "Nhap vao ma vat tu: ";
 						getline(cin, MaVatTu);
 						MaVatTu = str_replace(MaVatTu, " ", "_");
 						cout << endl;
-						//
+						// Tên vật tư
 						cout << "Nhap vao ten vat tu: ";
 						getline(cin, TenVatTu);
 						TenVatTu = str_replace(TenVatTu, " ", "_");
 						cout << endl;
-						//
+						// Loại vật tư
 						cout << "Nhap vao loai vat tu: ";
 						getline(cin, LoaiVatTu);
 						LoaiVatTu = str_replace(LoaiVatTu, " ", "_");
 						cout << endl;
-						//
+						// Đơn vị giá thành vật tư
 						cout << "Nhap vao don vi gia thanh vat tu: ";
 						getline(cin, DonViTinh);
 						DonViTinh = str_replace(DonViTinh, " ", "_");
 						cout << endl;
-						//
+						// Ngày nhập
 						NgayNhap = "Yo_dog";
-						//
+						// Nhà sản xuất vật tư
 						cout << "Nhap vao nha san xuat vat tu: ";
 						getline(cin, NhaSanXuat);
 						NhaSanXuat = str_replace(NhaSanXuat, " ", "_");
 						cout << endl;
-						do
-						{
-							cout << "Nhap vao so luong vat tu: ";
-							cin >> SoLuong;
-							cin.ignore(1);
-							cout << endl;
-						} while (SoLuong <= 0);
-						do
-						{
-							cout << "Nhap vao don gia vat tu: ";
-							cin >> DonGia;
-							cin.ignore(1);
-							cout << endl;
-						} while (DonGia < 0);
+						// Số lượng vật tư
+						do {
+							try {
+								cout << "Nhap vao so luong vat tu:";
+								cin >> SoLuong;
+								if (cin.fail() || SoLuong <= 0) {
+									throw string("Khong hop le , vui long nhap lai! \n");
+								}
+								cin.clear();
+								cin.ignore(10000, '\n');
+								break;
+							}
+							catch (string error) {
+								cin.clear();
+								cin.ignore(10000, '\n');
+								cout << error;
+							}
+						} while (true);
+						// Đơn giá vật tư
+						do {
+							try {
+								cout << "Nhap vao don gia vat tu:";
+								cin >> DonGia;
+								if (cin.fail() || DonGia < 0) {
+									throw string("Khong hop le , vui long nhap lai! \n");
+								}
+								cin.clear();
+								cin.ignore(10000, '\n');
+								break;
+							}
+							catch (string error) {
+								cin.clear();
+								cin.ignore(10000, '\n');
+								cout << error;
+							}
+						} while (true);
 						// Xử lí giá thành
 						if (SoLuong <= 100) {
 							ThanhTien = DonGia * SoLuong;
@@ -140,9 +190,94 @@ void Menu() {
 					file.close();
 					break;
 				}
-				case 2: // 1.2) Sắp xếp sau khi thêm
+				case 2: // 1.2) Sắp xếp theo số lượng sau khi thêm
 				{
-
+					ofstream file;
+					file.open("db.txt", ios::app);
+					if (file.is_open()) {
+						cout << "Nhap vao thong tin vat tu can them" << endl;
+						// Mã vật tư
+						cout << "Nhap vao ma vat tu: ";
+						getline(cin, MaVatTu);
+						MaVatTu = str_replace(MaVatTu, " ", "_");
+						cout << endl;
+						// Tên vật tư
+						cout << "Nhap vao ten vat tu: ";
+						getline(cin, TenVatTu);
+						TenVatTu = str_replace(TenVatTu, " ", "_");
+						cout << endl;
+						// Loại vật tư
+						cout << "Nhap vao loai vat tu: ";
+						getline(cin, LoaiVatTu);
+						LoaiVatTu = str_replace(LoaiVatTu, " ", "_");
+						cout << endl;
+						// Đơn vị giá thành vật tư
+						cout << "Nhap vao don vi gia thanh vat tu: ";
+						getline(cin, DonViTinh);
+						DonViTinh = str_replace(DonViTinh, " ", "_");
+						cout << endl;
+						// Ngày nhập
+						NgayNhap = "Yo_dog";
+						// Nhà sản xuất vật tư
+						cout << "Nhap vao nha san xuat vat tu: ";
+						getline(cin, NhaSanXuat);
+						NhaSanXuat = str_replace(NhaSanXuat, " ", "_");
+						cout << endl;
+						// Số lượng vật tư
+						do {
+							try {
+								cout << "Nhap vao so luong vat tu:";
+								cin >> SoLuong;
+								if (cin.fail() || SoLuong <= 0) {
+									throw string("Khong hop le , vui long nhap lai! \n");
+								}
+								cin.clear();
+								cin.ignore(10000, '\n');
+								break;
+							}
+							catch (string error) {
+								cin.clear();
+								cin.ignore(10000, '\n');
+								cout << error;
+							}
+						} while (true);
+						// Đơn giá vật tư
+						do {
+							try {
+								cout << "Nhap vao don gia vat tu:";
+								cin >> DonGia;
+								if (cin.fail() || DonGia < 0) {
+									throw string("Khong hop le , vui long nhap lai! \n");
+								}
+								cin.clear();
+								cin.ignore(10000, '\n');
+								break;
+							}
+							catch (string error) {
+								cin.clear();
+								cin.ignore(10000, '\n');
+								cout << error;
+							}
+						} while (true);
+						// Xử lí giá thành
+						if (SoLuong <= 100) {
+							ThanhTien = DonGia * SoLuong;
+						}
+						else if (SoLuong > 100 && SoLuong <= 200) {
+							ThanhTien = ceilf((DonGia * SoLuong) * 0.1);
+						}
+						else {
+							ThanhTien = ceilf((DonGia * SoLuong) * 0.2);
+						}
+						// Thêm vào file
+						file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NgayNhap << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << endl;
+						// Thêm vào list
+						A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien, HienThiElement(A));
+					}
+					file.close();
+					A.SapXepTheoSoLuong(ascending);
+					A.GhiVaoFile();
+					break;
 				}
 				case 3: // 1.3) Thoát công việc
 				{
@@ -167,9 +302,24 @@ void Menu() {
 				cout << "4. Xoa vat tu co so luong lon hon 100" << endl;
 				cout << "____________________________________________________________" << endl;
 				int submenu2;
-				cin >> submenu2;
-				cin.ignore(1); 
-				cin.clear();
+				// Sub menu choice 2
+				do {
+					try {
+						cout << "User>";
+						cin >> submenu2;
+						if (cin.fail() || submenu2 < 0 || submenu2 > 4) {
+							throw string("Khong hop le , vui long nhap lai! \n");
+						}
+						cin.clear();
+						cin.ignore(10000, '\n');
+						break;
+					}
+					catch (string error) {
+						cin.clear();
+						cin.ignore(10000, '\n');
+						cout << error;
+					}
+				} while (true);
 				switch (submenu2) {
 					case 1: // 3.1) Theo mã vật tư
 					{
@@ -217,9 +367,24 @@ void Menu() {
 				cout << "4. Thoat cong viec" << endl;
 				cout << "____________________________________________________________" << endl;
 				int submenu3;
-				cin >> submenu3;
-				cin.ignore(1);
-				cin.clear();
+				// Sub Menu 3 Choice
+				do {
+					try {
+						cout << "User>";
+						cin >> submenu3;
+						if (cin.fail() || submenu3 < 0 || submenu3 > 4) {
+							throw string("Khong hop le , vui long nhap lai! \n");
+						}
+						cin.clear();
+						cin.ignore(10000, '\n');
+						break;
+					}
+					catch (string error) {
+						cin.clear();
+						cin.ignore(10000, '\n');
+						cout << error;
+					}
+				} while (true);
 				switch (submenu3) {
 					case 1: // 4.1) Theo mã vật tư
 					{
@@ -262,11 +427,26 @@ void Menu() {
 				cout << "4. Thoat cong viec" << endl;
 				cout << "____________________________________________________________" << endl;
 				cout << "Hay chon cong viec:" << endl;
-				cout << "Thanos>";
+				cout << "User>";
 				int submenu4;
-				cin >> submenu4;
-				cin.ignore(1);
-				cin.clear();
+				// Sub menu choice 4
+				do {
+					try {
+						cout << "User>";
+						cin >> submenu4;
+						if (cin.fail() || submenu4 < 0 || submenu4 > 4) {
+							throw string("Khong hop le , vui long nhap lai! \n");
+						}
+						cin.clear();
+						cin.ignore(10000, '\n');
+						break;
+					}
+					catch (string error) {
+						cin.clear();
+						cin.ignore(10000, '\n');
+						cout << error;
+					}
+				} while (true);
 				switch (submenu4) {
 				case 1: // 5.1) Theo số lượng
 				{
@@ -277,11 +457,25 @@ void Menu() {
 					cout << "3. Thoat cong viec" << endl;
 					cout << "____________________________________________________________" << endl;
 					cout << "Hay chon cong viec:" << endl;
-					cout << "Thanos>";
 					int innermenu1;
-					cin >> innermenu1;
-					cin.ignore(1);
-					cin.clear();
+					// Inner menu choice 1
+					do {
+						try {
+							cout << "User>";
+							cin >> innermenu1;
+							if (cin.fail() || innermenu1 < 0 || innermenu1 > 3) {
+								throw string("Khong hop le , vui long nhap lai! \n");
+							}
+							cin.clear();
+							cin.ignore(10000, '\n');
+							break;
+						}
+						catch (string error) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << error;
+						}
+					} while (true);
 					switch (innermenu1) {
 						case 1: // 5.1.1) Theo thứ tự tăng dần
 						{
@@ -311,11 +505,25 @@ void Menu() {
 					cout << "3. Thoat cong viec" << endl;
 					cout << "____________________________________________________________" << endl;
 					cout << "Hay chon cong viec:" << endl;
-					cout << "Thanos>";
 					int innermenu2;
-					cin >> innermenu2;
-					cin.ignore(1);
-					cin.clear();
+					// Inner menu choice 2
+					do {
+						try {
+							cout << "User>";
+							cin >> innermenu2;
+							if (cin.fail() || innermenu2 < 0 || innermenu2 > 3) {
+								throw string("Khong hop le , vui long nhap lai! \n");
+							}
+							cin.clear();
+							cin.ignore(10000, '\n');
+							break;
+						}
+						catch (string error) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << error;
+						}
+					} while (true);
 					switch (innermenu2) {
 						case 1: // 5.2.1) Theo thứ tự tăng dần
 						{
@@ -345,11 +553,25 @@ void Menu() {
 					cout << "3. Thoat cong viec" << endl;
 					cout << "____________________________________________________________" << endl;
 					cout << "Hay chon cong viec:" << endl;
-					cout << "Thanos>";
 					int innermenu3;
-					cin >> innermenu3;
-					cin.ignore(1);
-					cin.clear();
+					// Inner menu choice 3
+					do {
+						try {
+							cout << "User>";
+							cin >> innermenu3;
+							if (cin.fail() || innermenu3 < 0 || innermenu3 > 3) {
+								throw string("Khong hop le , vui long nhap lai! \n");
+							}
+							cin.clear();
+							cin.ignore(10000, '\n');
+							break;
+						}
+						catch (string error) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << error;
+						}
+					} while (true);
 					switch (innermenu3) {
 						case 1: // 5.3.1) Theo thứ tự tăng dần
 						{
@@ -381,7 +603,7 @@ void Menu() {
 		// Xử lí tiếp tục công việc
 		do {
 			cout << "Ban co muon tiep tuc cong viec hay khong ( Y/N )" << endl;
-			cout << "Thanos>";
+			cout << "User>";
 			getline(cin, choice);
 		} while (choice != "Y" && choice != "N" && choice != "y" && choice != "n");
 		if (choice == "Y" || choice == "y") {

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <math.h>
 using namespace std;
