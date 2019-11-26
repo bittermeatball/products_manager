@@ -1,6 +1,7 @@
 ﻿#include "List.h"
 #include <fstream>
 #include <math.h>
+#include <ctime>
 using namespace std;
 // Hai hàm so sánh được sử dụng trong con trỏ hàm
 bool ascending(int left, int right) {
@@ -130,7 +131,11 @@ void Menu() {
 						DonViTinh = str_replace(DonViTinh, " ", "_");
 						cout << endl;
 						// Ngày nhập
-						NgayNhap = "Yo_dog";
+						time_t tt;
+						struct tm* ti;
+						time(&tt);
+						ti = localtime(&tt);
+						NgayNhap = str_replace(asctime(ti), " ", "_");
 						// Nhà sản xuất vật tư
 						cout << "Nhap vao nha san xuat vat tu: ";
 						getline(cin, NhaSanXuat);
