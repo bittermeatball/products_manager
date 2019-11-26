@@ -164,40 +164,46 @@ void Menu() {
 				cout << "1. Xoa vat tu theo ma vat tu" << endl;
 				cout << "2. Xoa vat tu theo ten vat tu" << endl;
 				cout << "3. Xoa vat tu theo loai vat tu" << endl;
+				cout << "4. Xoa vat tu co so luong lon hon 100" << endl;
 				cout << "____________________________________________________________" << endl;
 				int submenu2;
 				cin >> submenu2;
 				cin.ignore(1); 
 				cin.clear();
 				switch (submenu2) {
-				case 1: // 3.1) Theo mã vật tư
-				{
-					string Ma;
-					cout << "Hay nhap vao ma vat tu ban muon xoa: ";
-					getline(cin, Ma);
-					//
-					break;
-				}
-				case 2: // 3.2) Theo tên vật tư
-				{
-					string Ten;
-					cout << "Hay nhap vao ten cua vat tu ban muon xoa: ";
-					getline(cin, Ten);
-					//
-					break;
-				}
-				case 3: // 3.3) Theo loại vật tư
-				{
-					string Loai;
-					cout << "Hay nhap vao loai vat tu ban muon xoa: ";
-					getline(cin, Loai);
-					//
-					break;
-				}
-				case 4: // 3.4) Thoát công việc
-				{
-					break;
-				}
+					case 1: // 3.1) Theo mã vật tư
+					{
+						string Ma;
+						cout << "Hay nhap vao ma vat tu ban muon xoa: ";
+						getline(cin, Ma);
+						A.XoaTheoMa(Ma);
+						A.GhiVaoFile();
+						break;
+					}
+					case 2: // 3.2) Theo tên vật tư
+					{
+						string Ten;
+						cout << "Hay nhap vao ten cua vat tu ban muon xoa: ";
+						getline(cin, Ten);
+						A.XoaTheoTen(Ten);
+						A.GhiVaoFile();
+						//
+						break;
+					}
+					case 3: // 3.3) Theo loại vật tư
+					{
+						string Loai;
+						cout << "Hay nhap vao loai vat tu ban muon xoa: ";
+						getline(cin, Loai);
+						A.XoaTheoLoai(Loai);
+						A.GhiVaoFile();
+						//
+						break;
+					}
+					case 4: // 3.4) Thoát công việc
+					{
+						break;
+					}
 				}
 				break;
 			}

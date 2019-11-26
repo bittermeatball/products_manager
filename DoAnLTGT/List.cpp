@@ -1,4 +1,10 @@
 ﻿#include "List.h"
+// Hàm hoán vị
+void HoanVi(VatTu& VT1, VatTu& VT2) {
+	VatTu temp = VT1;
+	VT1 = VT2;
+	VT2 = temp;
+}
 // Hàm dựng
 List::List()
 	: PhanTu(0)
@@ -71,13 +77,103 @@ void List::Them(string MaVatTu, string TenVatTu, string LoaiVatTu, string DonViT
 
 // Hàm xóa
 void List::XoaTheoMa(string Ma) {
-
+	// Trường hợp 1 : Chưa có phần tử nào trong list
+	if (this->PhanTu == 0) {
+		cout << "Khong co phan tu nao de xoa!" << endl;
+	}
+	// Trường hợp 2 : Đã có các phần tử trong list
+	else {
+		// Khởi tạo một mảng mới để chứa các phần tử List sau khi đã được dịch chuyển
+		int DeleteCount = 0;
+		VatTu* MangMoi = new VatTu[(this->PhanTu) - 1];
+		if (this->PhanTu > 1) {
+			for (int i = 0; i < this->PhanTu; i++) {
+				if ((this->DanhSachVatTu + i)->LayMaVatTu() == Ma) {
+					DeleteCount++;
+					for (int j = i; j < this->PhanTu - 1; j++) {
+						HoanVi(*(this->DanhSachVatTu + j), *(this->DanhSachVatTu + j + 1));
+					}
+					break;
+				}
+			}
+		}
+		this->HienThiList();
+		// Copy các phần tử qua một mảng mới
+		for (int i = 0; i < this->PhanTu - DeleteCount; i++) {
+			*(MangMoi + i) = *(this->DanhSachVatTu + i);
+		}
+		delete[]this->DanhSachVatTu;
+		this->PhanTu = this->PhanTu - DeleteCount;
+		DanhSachVatTu = new VatTu[this->PhanTu];
+		for (int i = 0; i < this->PhanTu; i++) {
+			*(this->DanhSachVatTu + i) = *(MangMoi + i);
+		}
+		delete[] MangMoi;
+	}
 }
 void List::XoaTheoTen(string Ten) {
-
+	// Trường hợp 1 : Chưa có phần tử nào trong list
+	if (this->PhanTu == 0) {
+		cout << "Khong co phan tu nao de xoa!" << endl;
+	}
+	// Trường hợp 2 : Đã có các phần tử trong list
+	else {
+		// Khởi tạo một mảng mới để chứa các phần tử List sau khi đã được dịch chuyển
+		VatTu* MangMoi = new VatTu[(this->PhanTu) - 1];
+		if (this->PhanTu > 1) {
+			for (int i = 0; i < this->PhanTu; i++) {
+				if ((this->DanhSachVatTu + i)->LayTenVatTu() == Ten) {
+					for (int j = i; j < this->PhanTu - 1; j++) {
+						HoanVi(*(this->DanhSachVatTu + j), *(this->DanhSachVatTu + j + 1));
+					}
+					break;
+				}
+			}
+		}
+		// Copy các phần tử qua một mảng mới
+		for (int i = 0; i < this->PhanTu - 1; i++) {
+			*(MangMoi + i) = *(this->DanhSachVatTu + i);
+		}
+		delete[]this->DanhSachVatTu;
+		this->PhanTu--;
+		DanhSachVatTu = new VatTu[this->PhanTu];
+		for (int i = 0; i < this->PhanTu; i++) {
+			*(this->DanhSachVatTu + i) = *(MangMoi + i);
+		}
+		delete[] MangMoi;
+	}
 }
 void List::XoaTheoLoai(string Loai) {
-
+	// Trường hợp 1 : Chưa có phần tử nào trong list
+	if (this->PhanTu == 0) {
+		cout << "Khong co phan tu nao de xoa!" << endl;
+	}
+	// Trường hợp 2 : Đã có các phần tử trong list
+	else {
+		// Khởi tạo một mảng mới để chứa các phần tử List sau khi đã được dịch chuyển
+		VatTu* MangMoi = new VatTu[(this->PhanTu) - 1];
+		if (this->PhanTu > 1) {
+			for (int i = 0; i < this->PhanTu; i++) {
+				if ((this->DanhSachVatTu + i)->LayLoaiVatTu() == Loai) {
+					for (int j = i; j < this->PhanTu - 1; j++) {
+						HoanVi(*(this->DanhSachVatTu + j), *(this->DanhSachVatTu + j + 1));
+					}
+					break;
+				}
+			}
+		}
+		// Copy các phần tử qua một mảng mới
+		for (int i = 0; i < this->PhanTu - 1; i++) {
+			*(MangMoi + i) = *(this->DanhSachVatTu + i);
+		}
+		delete[]this->DanhSachVatTu;
+		this->PhanTu--;
+		DanhSachVatTu = new VatTu[this->PhanTu];
+		for (int i = 0; i < this->PhanTu; i++) {
+			*(this->DanhSachVatTu + i) = *(MangMoi + i);
+		}
+		delete[] MangMoi;
+	}
 }
 
 // Hàm tìm kiếm
@@ -128,11 +224,6 @@ void List::TimKiemTheoLoai(string Loai) {
 }
 
 // Hàm sắp xếp
-void HoanVi(VatTu& VT1, VatTu& VT2) {
-	VatTu temp = VT1;
-	VT1 = VT2;
-	VT2 = temp;
-}
 void List::SapXepTheoDonGia(bool (*Func)(int,int)) {
 	for (int i = 0; i < this->PhanTu-1; i++) {
 		for (int j = i + 1; j < this->PhanTu; j++) {

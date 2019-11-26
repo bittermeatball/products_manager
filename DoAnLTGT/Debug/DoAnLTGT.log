@@ -1,6 +1,2 @@
-﻿  Source.cpp
-D:\Ky5\OOP Application ( Thursday )\DoAnLTGT\DoAnLTGT\Source.cpp(128,45): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\DoAnLTGT\DoAnLTGT\Source.cpp(128,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\DoAnLTGT\DoAnLTGT\Source.cpp(131,45): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\DoAnLTGT\DoAnLTGT\Source.cpp(131,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-  DoAnLTGT.vcxproj -> D:\Ky5\OOP Application ( Thursday )\DoAnLTGT\Debug\DoAnLTGT.exe
+﻿  List.cpp
+  DoAnLTGT.vcxproj -> D:\Ky5\OOP Application ( Thursday )\products_manager\Debug\DoAnLTGT.exe
