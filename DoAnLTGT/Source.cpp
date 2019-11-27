@@ -305,6 +305,7 @@ void Menu() {
 				cout << "2. Xoa vat tu theo ten vat tu" << endl;
 				cout << "3. Xoa vat tu theo loai vat tu" << endl;
 				cout << "4. Xoa vat tu co so luong lon hon 100" << endl;
+				cout << "5. Thoat cong viec" << endl;
 				cout << "____________________________________________________________" << endl;
 				int submenu2;
 				// Sub menu choice 2
@@ -312,7 +313,7 @@ void Menu() {
 					try {
 						cout << "User>";
 						cin >> submenu2;
-						if (cin.fail() || submenu2 < 0 || submenu2 > 4) {
+						if (cin.fail() || submenu2 < 0 || submenu2 > 5) {
 							throw string("Khong hop le , vui long nhap lai! \n");
 						}
 						cin.clear();
@@ -331,6 +332,7 @@ void Menu() {
 						string Ma;
 						cout << "Hay nhap vao ma vat tu ban muon xoa: ";
 						getline(cin, Ma);
+						Ma = str_replace(Ma, " ", "_");
 						A.XoaTheoMa(Ma);
 						A.GhiVaoFile();
 						break;
@@ -340,6 +342,7 @@ void Menu() {
 						string Ten;
 						cout << "Hay nhap vao ten cua vat tu ban muon xoa: ";
 						getline(cin, Ten);
+						Ten = str_replace(Ten, " ", "_");
 						A.XoaTheoTen(Ten);
 						A.GhiVaoFile();
 						//
@@ -350,12 +353,19 @@ void Menu() {
 						string Loai;
 						cout << "Hay nhap vao loai vat tu ban muon xoa: ";
 						getline(cin, Loai);
+						Loai = str_replace(Loai, " ", "_");
 						A.XoaTheoLoai(Loai);
 						A.GhiVaoFile();
 						//
 						break;
 					}
-					case 4: // 3.4) Thoát công việc
+					case 4: // 3.4) Theo số lượng vật tư hơn 100
+					{
+						A.XoaTren100();
+						A.GhiVaoFile();
+						break;
+					}
+					case 5: // 3.5) Thoát công việc
 					{
 						break;
 					}
@@ -396,6 +406,7 @@ void Menu() {
 						string Ma;
 						cout << "Hay nhap vao ma vat tu ban muon tim: ";
 						getline(cin, Ma);
+						Ma = str_replace(Ma, " ", "_");
 						A.TimKiemTheoMa(Ma);
 						break;
 					}
@@ -404,6 +415,7 @@ void Menu() {
 						string Ten;
 						cout << "Hay nhap vao ten cua vat tu ban muon tim: ";
 						getline(cin, Ten);
+						Ten = str_replace(Ten, " ", "_");
 						A.TimKiemTheoTen(Ten);
 						break;
 					}
@@ -412,6 +424,7 @@ void Menu() {
 						string Loai;
 						cout << "Hay nhap vao loai vat tu ban muon tim: ";
 						getline(cin, Loai);
+						Loai = str_replace(Loai, " ", "_");
 						A.TimKiemTheoLoai(Loai);
 						break;
 					}
@@ -620,13 +633,6 @@ void Menu() {
 	} while (choice == "Y" || choice == "y");
 }
 int main() {
-	// current date/time based on current system
-	time_t now = time(0);
-
-	// convert now to string form
-	char* dt = ctime(&now);
-
-	cout << "The local date and time is: " << dt << endl;
 	Menu();
 	return 0;
 }

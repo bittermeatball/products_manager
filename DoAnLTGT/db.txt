@@ -1,5 +1,9 @@
-AH-280 But_chi_mau But Viet_Nam_Dong Thien_Long 1000 20000 4000000 Tue_Nov_26_23:01:02_2019
+BK-580 But_bi But Dollars James_Charles 900 5 900 Tue_Nov_26_23:01:39_2019
+KU-290 Giay_Sandal Giay Dollars Bitis 280 100 5600 Tue_Nov_26_23:25:52_2019
 KL-920 But_long But Yen Kimochi 104 2900 30160 Tue_Nov_26_23:07:34_2019
 AK-222 Tivi Do_gia_dung Dollars LG 90 2000 180000 Tue_Nov_26_23:20:22_2019
-KU-290 Giay_Sandal Giay Dollars Bitis 280 100 5600 Tue_Nov_26_23:25:52_2019
-BK-580 But_bi But Dollars James_Charles 900 5 900 Tue_Nov_26_23:01:39_2019
+AH-280 But_chi_mau But Viet_Nam_Dong Thien_Long 1000 20000 4000000 Tue_Nov_26_23:01:02_2019
+AH-280 But_chi_mau But Viet_Nam_Dong Thien_Long 1000 20000 4000000 Tue_Nov_26_23:01:02_2019
+AH-280 But_chi_mau But Viet_Nam_Dong Thien_Long 1000 20000 4000000 Tue_Nov_26_23:01:02_2019
+AH-280 But_chi_mau But Viet_Nam_Dong Thien_Long 1000 20000 4000000 Tue_Nov_26_23:01:02_2019
+AH-280 But_chi_mau But Viet_Nam_Dong Thien_Long 1000 20000 4000000 Tue_Nov_26_23:01:02_2019

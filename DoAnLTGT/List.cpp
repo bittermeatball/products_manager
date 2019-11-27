@@ -80,12 +80,9 @@ void List::XoaTheoMa(string Ma) {
 	else {
 		int DeleteCount=0;
 		for (int i = 0; i < this->PhanTu; i++) {
+			// Đếm số phần tử phải xóa
 			if ((this->DanhSachVatTu + i)->LayMaVatTu() == Ma) {
 				DeleteCount++;
-				for (int j = i; j < this->PhanTu - 1; j++) {
-					HoanVi(*(this->DanhSachVatTu + j), *(this->DanhSachVatTu + j + 1));
-				}
-				break;
 			}
 		}
 		if (DeleteCount == 0) {
@@ -93,13 +90,20 @@ void List::XoaTheoMa(string Ma) {
 		}
 		else {
 			cout << "Da xoa " << DeleteCount << " vat tu" << endl;
-			// Khởi tạo một mảng mới để chứa các phần tử List sau khi đã được dịch chuyển
-			VatTu* MangMoi = new VatTu[(this->PhanTu) - 1];
-			for (int i = 0; i < this->PhanTu - 1; i++) {
-				*(MangMoi + i) = *(this->DanhSachVatTu + i);
+			// Khởi tạo một mảng mới để chứa các phần tử List không bao gồm các phần tử bị xóa
+			VatTu* MangMoi = new VatTu[(this->PhanTu) - DeleteCount];
+			int j = 0;
+			for (int i = 0; i < this->PhanTu; i++) {
+				if ((this->DanhSachVatTu + i)->LayMaVatTu() != Ma) {
+					*(MangMoi + j) = *(this->DanhSachVatTu + i);
+				}
+ 				else {
+					j--;
+				}
+				j++;
 			}
 			delete[]this->DanhSachVatTu;
-			this->PhanTu--;
+			this->PhanTu= this->PhanTu- DeleteCount;
 			DanhSachVatTu = new VatTu[this->PhanTu];
 			for (int i = 0; i < this->PhanTu; i++) {
 				*(this->DanhSachVatTu + i) = *(MangMoi + i);
@@ -117,12 +121,9 @@ void List::XoaTheoTen(string Ten) {
 	else {
 		int DeleteCount = 0;
 		for (int i = 0; i < this->PhanTu; i++) {
+			// Đếm số phần tử phải xóa
 			if ((this->DanhSachVatTu + i)->LayTenVatTu() == Ten) {
 				DeleteCount++;
-				for (int j = i; j < this->PhanTu - 1; j++) {
-					HoanVi(*(this->DanhSachVatTu + j), *(this->DanhSachVatTu + j + 1));
-				}
-				break;
 			}
 		}
 		if (DeleteCount == 0) {
@@ -130,13 +131,20 @@ void List::XoaTheoTen(string Ten) {
 		}
 		else {
 			cout << "Da xoa " << DeleteCount << " vat tu" << endl;
-			// Khởi tạo một mảng mới để chứa các phần tử List sau khi đã được dịch chuyển
-			VatTu* MangMoi = new VatTu[(this->PhanTu) - 1];
-			for (int i = 0; i < this->PhanTu - 1; i++) {
-				*(MangMoi + i) = *(this->DanhSachVatTu + i);
+			// Khởi tạo một mảng mới để chứa các phần tử List không bao gồm các phần tử bị xóa
+			VatTu* MangMoi = new VatTu[(this->PhanTu) - DeleteCount];
+			int j = 0;
+			for (int i = 0; i < this->PhanTu; i++) {
+				if ((this->DanhSachVatTu + i)->LayTenVatTu() != Ten) {
+					*(MangMoi + j) = *(this->DanhSachVatTu + i);
+				}
+				else {
+					j--;
+				}
+				j++;
 			}
 			delete[]this->DanhSachVatTu;
-			this->PhanTu--;
+			this->PhanTu = this->PhanTu - DeleteCount;
 			DanhSachVatTu = new VatTu[this->PhanTu];
 			for (int i = 0; i < this->PhanTu; i++) {
 				*(this->DanhSachVatTu + i) = *(MangMoi + i);
@@ -154,12 +162,9 @@ void List::XoaTheoLoai(string Loai) {
 	else {
 		int DeleteCount = 0;
 		for (int i = 0; i < this->PhanTu; i++) {
+			// Đếm số phần tử phải xóa
 			if ((this->DanhSachVatTu + i)->LayLoaiVatTu() == Loai) {
 				DeleteCount++;
-				for (int j = i; j < this->PhanTu - 1; j++) {
-					HoanVi(*(this->DanhSachVatTu + j), *(this->DanhSachVatTu + j + 1));
-				}
-				break;
 			}
 		}
 		if (DeleteCount == 0) {
@@ -167,13 +172,20 @@ void List::XoaTheoLoai(string Loai) {
 		}
 		else {
 			cout << "Da xoa " << DeleteCount << " vat tu" << endl;
-			// Khởi tạo một mảng mới để chứa các phần tử List sau khi đã được dịch chuyển
-			VatTu* MangMoi = new VatTu[(this->PhanTu) - 1];
-			for (int i = 0; i < this->PhanTu - 1; i++) {
-				*(MangMoi + i) = *(this->DanhSachVatTu + i);
+			// Khởi tạo một mảng mới để chứa các phần tử List không bao gồm các phần tử bị xóa
+			VatTu* MangMoi = new VatTu[(this->PhanTu) - DeleteCount];
+			int j = 0;
+			for (int i = 0; i < this->PhanTu; i++) {
+				if ((this->DanhSachVatTu + i)->LayLoaiVatTu() != Loai) {
+					*(MangMoi + j) = *(this->DanhSachVatTu + i);
+				}
+				else {
+					j--;
+				}
+				j++;
 			}
 			delete[]this->DanhSachVatTu;
-			this->PhanTu--;
+			this->PhanTu = this->PhanTu - DeleteCount;
 			DanhSachVatTu = new VatTu[this->PhanTu];
 			for (int i = 0; i < this->PhanTu; i++) {
 				*(this->DanhSachVatTu + i) = *(MangMoi + i);
@@ -191,12 +203,9 @@ void List::XoaTren100() {
 	else {
 		int DeleteCount = 0;
 		for (int i = 0; i < this->PhanTu; i++) {
+			// Đếm số phần tử phải xóa
 			if ((this->DanhSachVatTu + i)->LaySoLuong() > 100) {
 				DeleteCount++;
-				for (int j = i; j < this->PhanTu - 1; j++) {
-					HoanVi(*(this->DanhSachVatTu + j), *(this->DanhSachVatTu + j + 1));
-				}
-				break;
 			}
 		}
 		if (DeleteCount == 0) {
@@ -204,13 +213,20 @@ void List::XoaTren100() {
 		}
 		else {
 			cout << "Da xoa " << DeleteCount << " vat tu" << endl;
-			// Khởi tạo một mảng mới để chứa các phần tử List sau khi đã được dịch chuyển
-			VatTu* MangMoi = new VatTu[(this->PhanTu) - 1];
-			for (int i = 0; i < this->PhanTu - 1; i++) {
-				*(MangMoi + i) = *(this->DanhSachVatTu + i);
+			// Khởi tạo một mảng mới để chứa các phần tử List không bao gồm các phần tử bị xóa
+			VatTu* MangMoi = new VatTu[(this->PhanTu) - DeleteCount];
+			int j = 0;
+			for (int i = 0; i < this->PhanTu; i++) {
+				if ((this->DanhSachVatTu + i)->LaySoLuong() <= 100) {
+					*(MangMoi + j) = *(this->DanhSachVatTu + i);
+				}
+				else {
+					j--;
+				}
+				j++;
 			}
 			delete[]this->DanhSachVatTu;
-			this->PhanTu--;
+			this->PhanTu = this->PhanTu - DeleteCount;
 			DanhSachVatTu = new VatTu[this->PhanTu];
 			for (int i = 0; i < this->PhanTu; i++) {
 				*(this->DanhSachVatTu + i) = *(MangMoi + i);
