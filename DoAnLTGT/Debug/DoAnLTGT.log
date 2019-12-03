@@ -1,10 +1,10 @@
 ﻿  Source.cpp
-D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(185,45): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(185,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(188,45): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(188,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(272,45): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(272,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(275,45): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(275,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(186,45): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(186,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(189,45): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(189,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(275,44): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(275,24): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(278,44): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+D:\Ky5\OOP Application ( Thursday )\products_manager\DoAnLTGT\Source.cpp(278,24): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
   DoAnLTGT.vcxproj -> D:\Ky5\OOP Application ( Thursday )\products_manager\Debug\DoAnLTGT.exe

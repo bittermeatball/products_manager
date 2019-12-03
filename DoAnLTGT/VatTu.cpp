@@ -65,16 +65,14 @@ int VatTu::LayThanhTien() const
 // Hàm hiển thị vật tư
 void VatTu::HienThiVatTu()
 {
-	cout << "Ma vat tu: " << MaVatTu << endl;
-	cout << "Ten vat tu: " << TenVatTu << endl;
-	cout << "Loai vat tu: " << LoaiVatTu << endl;
-	cout << "Nha san xuat: " << NhaSanXuat << endl;
-	cout << "So luong vat tu: " << SoLuong << endl;
-	cout << "Don gia vat tu: " << DonGia << " ( " << DonViTinh << "/1 Vat Tu )" << endl;
-	cout << "Thanh tien: " << ThanhTien << " (" << DonViTinh << ") " << endl;
-	cout << "Ngay nhap vat tu: " << NgayNhap << endl << endl;
-	cout << "____________________________________________________________" << endl << endl << endl;
-
+	cout << setw(15) << MaVatTu << "|";
+	cout << setw(20) << TenVatTu << "|";
+	cout << setw(20) << LoaiVatTu << "|";
+	cout << setw(25) << NhaSanXuat << "|";
+	cout << setw(10) << SoLuong << "|";
+	cout << setw(10) << DonGia << "|";
+	cout << setw(10) << ThanhTien << "|";
+	cout << setw(30) << NgayNhap << "|" << endl;
 }
 
 // Hàm hủy

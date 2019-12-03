@@ -136,6 +136,7 @@ void Menu() {
 						time(&tt);
 						ti = localtime(&tt);
 						NgayNhap = str_replace(asctime(ti), " ", "_");
+						NgayNhap = str_replace(NgayNhap, "\n", " ");
 						// Nhà sản xuất vật tư
 						cout << "Nhap vao nha san xuat vat tu: ";
 						getline(cin, NhaSanXuat);
@@ -188,7 +189,7 @@ void Menu() {
 							ThanhTien = ceilf((DonGia * SoLuong) * 0.2);
 						}
 						// Thêm vào file
-						file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << NgayNhap;
+						file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << NgayNhap << endl;
 						// Thêm vào list
 						A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
 					}
@@ -197,89 +198,87 @@ void Menu() {
 				}
 				case 2: // 1.2) Sắp xếp theo số lượng sau khi thêm
 				{
-					ofstream file;
-					file.open("db.txt", ios::app);
-					if (file.is_open()) {
-						cout << "Nhap vao thong tin vat tu can them" << endl;
-						// Mã vật tư
-						cout << "Nhap vao ma vat tu: ";
-						getline(cin, MaVatTu);
-						MaVatTu = str_replace(MaVatTu, " ", "_");
-						cout << endl;
-						// Tên vật tư
-						cout << "Nhap vao ten vat tu: ";
-						getline(cin, TenVatTu);
-						TenVatTu = str_replace(TenVatTu, " ", "_");
-						cout << endl;
-						// Loại vật tư
-						cout << "Nhap vao loai vat tu: ";
-						getline(cin, LoaiVatTu);
-						LoaiVatTu = str_replace(LoaiVatTu, " ", "_");
-						cout << endl;
-						// Đơn vị giá thành vật tư
-						cout << "Nhap vao don vi gia thanh vat tu: ";
-						getline(cin, DonViTinh);
-						DonViTinh = str_replace(DonViTinh, " ", "_");
-						cout << endl;
-						// Ngày nhập
-						NgayNhap = "Yo_dog";
-						// Nhà sản xuất vật tư
-						cout << "Nhap vao nha san xuat vat tu: ";
-						getline(cin, NhaSanXuat);
-						NhaSanXuat = str_replace(NhaSanXuat, " ", "_");
-						cout << endl;
-						// Số lượng vật tư
-						do {
-							try {
-								cout << "Nhap vao so luong vat tu:";
-								cin >> SoLuong;
-								if (cin.fail() || SoLuong <= 0) {
-									throw string("Khong hop le , vui long nhap lai! \n");
-								}
-								cin.clear();
-								cin.ignore(10000, '\n');
-								break;
+					cout << "Nhap vao thong tin vat tu can them" << endl;
+					// Mã vật tư
+					cout << "Nhap vao ma vat tu: ";
+					getline(cin, MaVatTu);
+					MaVatTu = str_replace(MaVatTu, " ", "_");
+					cout << endl;
+					// Tên vật tư
+					cout << "Nhap vao ten vat tu: ";
+					getline(cin, TenVatTu);
+					TenVatTu = str_replace(TenVatTu, " ", "_");
+					cout << endl;
+					// Loại vật tư
+					cout << "Nhap vao loai vat tu: ";
+					getline(cin, LoaiVatTu);
+					LoaiVatTu = str_replace(LoaiVatTu, " ", "_");
+					cout << endl;
+					// Đơn vị giá thành vật tư
+					cout << "Nhap vao don vi gia thanh vat tu: ";
+					getline(cin, DonViTinh);
+					DonViTinh = str_replace(DonViTinh, " ", "_");
+					cout << endl;
+					// Ngày nhập
+					time_t tt;
+					struct tm* ti;
+					time(&tt);
+					ti = localtime(&tt);
+					NgayNhap = str_replace(asctime(ti), " ", "_");
+					NgayNhap = str_replace(NgayNhap, "\n", " ");
+					// Nhà sản xuất vật tư
+					cout << "Nhap vao nha san xuat vat tu: ";
+					getline(cin, NhaSanXuat);
+					NhaSanXuat = str_replace(NhaSanXuat, " ", "_");
+					cout << endl;
+					// Số lượng vật tư
+					do {
+						try {
+							cout << "Nhap vao so luong vat tu:";
+							cin >> SoLuong;
+							if (cin.fail() || SoLuong <= 0) {
+								throw string("Khong hop le , vui long nhap lai! \n");
 							}
-							catch (string error) {
-								cin.clear();
-								cin.ignore(10000, '\n');
-								cout << error;
-							}
-						} while (true);
-						// Đơn giá vật tư
-						do {
-							try {
-								cout << "Nhap vao don gia vat tu:";
-								cin >> DonGia;
-								if (cin.fail() || DonGia < 0) {
-									throw string("Khong hop le , vui long nhap lai! \n");
-								}
-								cin.clear();
-								cin.ignore(10000, '\n');
-								break;
-							}
-							catch (string error) {
-								cin.clear();
-								cin.ignore(10000, '\n');
-								cout << error;
-							}
-						} while (true);
-						// Xử lí giá thành
-						if (SoLuong <= 100) {
-							ThanhTien = DonGia * SoLuong;
+							cin.clear();
+							cin.ignore(10000, '\n');
+							break;
 						}
-						else if (SoLuong > 100 && SoLuong <= 200) {
-							ThanhTien = ceilf((DonGia * SoLuong) * 0.1);
+						catch (string error) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << error;
 						}
-						else {
-							ThanhTien = ceilf((DonGia * SoLuong) * 0.2);
+					} while (true);
+					// Đơn giá vật tư
+					do {
+						try {
+							cout << "Nhap vao don gia vat tu:";
+							cin >> DonGia;
+							if (cin.fail() || DonGia < 0) {
+								throw string("Khong hop le , vui long nhap lai! \n");
+							}
+							cin.clear();
+							cin.ignore(10000, '\n');
+							break;
 						}
-						// Thêm vào file
-						file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << NgayNhap;
-						// Thêm vào list
-						A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
+						catch (string error) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << error;
+						}
+					} while (true);
+					// Xử lí giá thành
+					if (SoLuong <= 100) {
+						ThanhTien = DonGia * SoLuong;
 					}
-					file.close();
+					else if (SoLuong > 100 && SoLuong <= 200) {
+						ThanhTien = ceilf((DonGia * SoLuong) * 0.1);
+					}
+					else {
+						ThanhTien = ceilf((DonGia * SoLuong) * 0.2);
+					}
+					// Thêm vào list
+					A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
 					A.SapXepTheoSoLuong(ascending);
 					A.GhiVaoFile();
 					break;
@@ -445,7 +444,6 @@ void Menu() {
 				cout << "4. Thoat cong viec" << endl;
 				cout << "____________________________________________________________" << endl;
 				cout << "Hay chon cong viec:" << endl;
-				cout << "User>";
 				int submenu4;
 				// Sub menu choice 4
 				do {

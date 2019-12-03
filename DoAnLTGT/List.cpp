@@ -30,9 +30,39 @@ List::List(VatTu VT, int PhanTu)
 }
 // Hàm hiển thị
 void List::HienThiList() {
-	for (int i = 0; i < this->PhanTu; i++) {
-		cout << "Thong tin nhan vien thu " << i + 1 << " la: " << endl;
+	cout << " _________________________________________________________________________________________________________________________________________________________" << endl;
+	cout << "|" << setw(5) << "STT" << "|";
+	cout << setw(15) << "Ma Vat Tu" << "|";
+	cout << setw(20) << "Ten Vat Tu" << "|";
+	cout << setw(20) << "Loai Vat Tu" << "|";
+	cout << setw(25) << "Nha San Xuat" << "|";
+	cout << setw(10) << "So Luong" << "|";
+	cout << setw(10) << "Don Gia" << "|";
+	cout << setw(10) << "Thanh Tien" << "|";
+	cout << setw(30) << "Ngay nhap" << "|" << endl;
+	cout << "|_____|";
+	cout << setw(15) << "_______________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(25) << "_________________________|";
+	cout << setw(10) << "__________|";
+	cout << setw(10) << "__________|";
+	cout << setw(10) << "__________|";
+	cout << setw(30) << "______________________________|";
+	cout << endl;
+ 	for (int i = 0; i < this->PhanTu; i++) {
+		cout << "|" << setw(5) << i + 1 << "|";
 		(this->DanhSachVatTu + i)->HienThiVatTu();
+		cout << "|_____|";
+		cout << setw(15) << "_______________|";
+		cout << setw(20) << "____________________|";
+		cout << setw(20) << "____________________|";
+		cout << setw(25) << "_________________________|";
+		cout << setw(10) << "__________|";
+		cout << setw(10) << "__________|";
+		cout << setw(10) << "__________|";
+		cout << setw(30) << "______________________________|";
+		cout << endl;
 	}
 }
 // Hàm thêm
@@ -78,7 +108,7 @@ void List::XoaTheoMa(string Ma) {
 	}
 	// Trường hợp 2 : Đã có các phần tử trong list
 	else {
-		int DeleteCount=0;
+		int DeleteCount = 0;
 		for (int i = 0; i < this->PhanTu; i++) {
 			// Đếm số phần tử phải xóa
 			if ((this->DanhSachVatTu + i)->LayMaVatTu() == Ma) {
@@ -97,13 +127,13 @@ void List::XoaTheoMa(string Ma) {
 				if ((this->DanhSachVatTu + i)->LayMaVatTu() != Ma) {
 					*(MangMoi + j) = *(this->DanhSachVatTu + i);
 				}
- 				else {
+				else {
 					j--;
 				}
 				j++;
 			}
 			delete[]this->DanhSachVatTu;
-			this->PhanTu= this->PhanTu- DeleteCount;
+			this->PhanTu = this->PhanTu - DeleteCount;
 			DanhSachVatTu = new VatTu[this->PhanTu];
 			for (int i = 0; i < this->PhanTu; i++) {
 				*(this->DanhSachVatTu + i) = *(MangMoi + i);
@@ -239,9 +269,40 @@ void List::XoaTren100() {
 // Hàm tìm kiếm
 void List::TimKiemTheoMa(string Ma) {
 	int found = 0;
+	cout << " _________________________________________________________________________________________________________________________________________________________" << endl;
+	cout << "|" << setw(5) << "STT" << "|";
+	cout << setw(15) << "Ma Vat Tu" << "|";
+	cout << setw(20) << "Ten Vat Tu" << "|";
+	cout << setw(20) << "Loai Vat Tu" << "|";
+	cout << setw(25) << "Nha San Xuat" << "|";
+	cout << setw(10) << "So Luong" << "|";
+	cout << setw(10) << "Don Gia" << "|";
+	cout << setw(10) << "Thanh Tien" << "|";
+	cout << setw(30) << "Ngay nhap" << "|" << endl;
+	cout << "|_____|";
+	cout << setw(15) << "_______________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(25) << "_________________________|";
+	cout << setw(10) << "__________|";
+	cout << setw(10) << "__________|";
+	cout << setw(10) << "__________|";
+	cout << setw(30) << "______________________________|";
+	cout << endl;
 	for (int i = 0; i < this->PhanTu; i++) {
 		if ((this->DanhSachVatTu + i)->LayMaVatTu() == Ma) {
+			cout << "|" << setw(5) << i + 1 << "|";
 			(this->DanhSachVatTu + i)->HienThiVatTu();
+			cout << "|_____|";
+			cout << setw(15) << "_______________|";
+			cout << setw(20) << "____________________|";
+			cout << setw(20) << "____________________|";
+			cout << setw(25) << "_________________________|";
+			cout << setw(10) << "__________|";
+			cout << setw(10) << "__________|";
+			cout << setw(10) << "__________|";
+			cout << setw(30) << "______________________________|";
+			cout << endl;
 			found++;
 		}
 	}
@@ -254,9 +315,40 @@ void List::TimKiemTheoMa(string Ma) {
 }
 void List::TimKiemTheoTen(string Ten) {
 	int found = 0;
+	cout << " _________________________________________________________________________________________________________________________________________________________" << endl;
+	cout << "|" << setw(5) << "STT" << "|";
+	cout << setw(15) << "Ma Vat Tu" << "|";
+	cout << setw(20) << "Ten Vat Tu" << "|";
+	cout << setw(20) << "Loai Vat Tu" << "|";
+	cout << setw(25) << "Nha San Xuat" << "|";
+	cout << setw(10) << "So Luong" << "|";
+	cout << setw(10) << "Don Gia" << "|";
+	cout << setw(10) << "Thanh Tien" << "|";
+	cout << setw(30) << "Ngay nhap" << "|" << endl;
+	cout << "|_____|";
+	cout << setw(15) << "_______________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(25) << "_________________________|";
+	cout << setw(10) << "__________|";
+	cout << setw(10) << "__________|";
+	cout << setw(10) << "__________|";
+	cout << setw(30) << "______________________________|";
+	cout << endl;
 	for (int i = 0; i < this->PhanTu; i++) {
 		if ((this->DanhSachVatTu + i)->LayTenVatTu() == Ten) {
+			cout << "|" << setw(5) << i + 1 << "|";
 			(this->DanhSachVatTu + i)->HienThiVatTu();
+			cout << "|_____|";
+			cout << setw(15) << "_______________|";
+			cout << setw(20) << "____________________|";
+			cout << setw(20) << "____________________|";
+			cout << setw(25) << "_________________________|";
+			cout << setw(10) << "__________|";
+			cout << setw(10) << "__________|";
+			cout << setw(10) << "__________|";
+			cout << setw(30) << "______________________________|";
+			cout << endl;
 			found++;
 		}
 	}
@@ -269,9 +361,40 @@ void List::TimKiemTheoTen(string Ten) {
 }
 void List::TimKiemTheoLoai(string Loai) {
 	int found = 0;
+	cout << " _________________________________________________________________________________________________________________________________________________________" << endl;
+	cout << "|" << setw(5) << "STT" << "|";
+	cout << setw(15) << "Ma Vat Tu" << "|";
+	cout << setw(20) << "Ten Vat Tu" << "|";
+	cout << setw(20) << "Loai Vat Tu" << "|";
+	cout << setw(25) << "Nha San Xuat" << "|";
+	cout << setw(10) << "So Luong" << "|";
+	cout << setw(10) << "Don Gia" << "|";
+	cout << setw(10) << "Thanh Tien" << "|";
+	cout << setw(30) << "Ngay nhap" << "|" << endl;
+	cout << "|_____|";
+	cout << setw(15) << "_______________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(25) << "_________________________|";
+	cout << setw(10) << "__________|";
+	cout << setw(10) << "__________|";
+	cout << setw(10) << "__________|";
+	cout << setw(30) << "______________________________|";
+	cout << endl;
 	for (int i = 0; i < this->PhanTu; i++) {
 		if ((this->DanhSachVatTu + i)->LayLoaiVatTu() == Loai) {
+			cout << "|" << setw(5) << i + 1 << "|";
 			(this->DanhSachVatTu + i)->HienThiVatTu();
+			cout << "|_____|";
+			cout << setw(15) << "_______________|";
+			cout << setw(20) << "____________________|";
+			cout << setw(20) << "____________________|";
+			cout << setw(25) << "_________________________|";
+			cout << setw(10) << "__________|";
+			cout << setw(10) << "__________|";
+			cout << setw(10) << "__________|";
+			cout << setw(30) << "______________________________|";
+			cout << endl;
 			found++;
 		}
 	}
