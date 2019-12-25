@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <fstream>
 #include <math.h>
+#include "Helpers.h"
 using namespace std;
 class VatTu
 {
@@ -15,12 +16,12 @@ private:
 	string NgayNhap;
 	string NhaSanXuat;
 	int SoLuong;
-	int DonGia;
-	int ThanhTien;
+	long long int DonGia;
+	long long int ThanhTien;
 public:
 	// Hàm dựng
 	VatTu();
-	VatTu(string, string, string, string, string, string, int, int, int);
+	VatTu(string, string, string, string, string, string, int, long long int, long long int);
 	VatTu(const VatTu&);
 	// Các hàm getter
 	string LayMaVatTu() const;
@@ -30,8 +31,8 @@ public:
 	string LayNgayNhap() const;
 	string LayNhaSanXuat() const;
 	int LaySoLuong() const;
-	int LayDonGia() const;
-	int LayThanhTien() const;
+	long long int LayDonGia() const;
+	long long int LayThanhTien() const;
 	
 	// Hàm hiển thị
 	void HienThiVatTu();

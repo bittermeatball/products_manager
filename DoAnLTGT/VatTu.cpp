@@ -1,4 +1,5 @@
 ﻿#include "VatTu.h"
+Helpers helper;
 // Hàm dựng
 VatTu::VatTu()
 	: MaVatTu("#"), TenVatTu("#"), LoaiVatTu("#"), DonViTinh("#"), NgayNhap("#"), NhaSanXuat("#"), 
@@ -6,7 +7,7 @@ VatTu::VatTu()
 {
 
 }
-VatTu::VatTu(string MaVatTu, string TenVatTu, string LoaiVatTu, string DonViTinh, string NgayNhap, string NhaSanXuat, int SoLuong, int DonGia, int ThanhTien)
+VatTu::VatTu(string MaVatTu, string TenVatTu, string LoaiVatTu, string DonViTinh, string NgayNhap, string NhaSanXuat, int SoLuong, long long int DonGia, long long int ThanhTien)
 	: MaVatTu(MaVatTu), TenVatTu(TenVatTu), LoaiVatTu(LoaiVatTu), DonViTinh(DonViTinh), NgayNhap(NgayNhap), NhaSanXuat(NhaSanXuat),
 	SoLuong(SoLuong), DonGia(DonGia), ThanhTien(ThanhTien)
 {
@@ -53,11 +54,11 @@ int VatTu::LaySoLuong() const
 {
 	return this->SoLuong;
 }
-int VatTu::LayDonGia() const
+long long int VatTu::LayDonGia() const
 {
 	return this->DonGia;
 }
-int VatTu::LayThanhTien() const
+long long int VatTu::LayThanhTien() const
 {
 	return this->ThanhTien;
 }
@@ -65,10 +66,10 @@ int VatTu::LayThanhTien() const
 // Hàm hiển thị vật tư
 void VatTu::HienThiVatTu()
 {
-	cout << setw(15) << MaVatTu << "|";
-	cout << setw(20) << TenVatTu << "|";
-	cout << setw(20) << LoaiVatTu << "|";
-	cout << setw(25) << NhaSanXuat << "|";
+	cout << setw(15) << helper.str_replace(MaVatTu, "_", " ") << "|";
+	cout << setw(20) << helper.str_replace(TenVatTu, "_", " ") << "|";
+	cout << setw(20) << helper.str_replace(LoaiVatTu, "_", " ") << "|";
+	cout << setw(25) << helper.str_replace(NhaSanXuat, "_", " ") << "|";
 	cout << setw(10) << SoLuong << "|";
 	cout << setw(10) << DonGia << "|";
 	cout << setw(10) << ThanhTien << "|";

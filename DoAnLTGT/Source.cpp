@@ -3,33 +3,20 @@
 #include <math.h>
 #include <ctime>
 using namespace std;
-// Hai hàm so sánh được sử dụng trong con trỏ hàm
-bool ascending(int left, int right) {
+
+bool ascending(long long int left, long long int right) {
 	return left > right;
 }
-bool descending(int left, int right) {
+bool descending(long long int left,long long int right) {
 	return left < right;
 }
-string str_replace(string input, string pre, string pos) {
-	int length = input.size();
-	int x = 0;
-	string fixed;
-	while (x != length) {
-		string letter = input.substr(x, 1);
-		if (letter == pre) {
-			letter = pos;
-		}
-		fixed = fixed + letter;
-		x++;
-	}
-	return fixed;
-}
 void Menu() {
-	// Khởi tạo một List
+	Helpers helper;
 	List A;
 	// Các tham số liên quan đến vật tư
 	string MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat;
-	int SoLuong, DonGia, ThanhTien;
+	int SoLuong;
+	long long int DonGia, ThanhTien;
 	// File
 	ifstream file;
 	file.open("db.txt");
@@ -39,10 +26,10 @@ void Menu() {
 			A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
 		}
 	}
-	else cout << "Unable to open file";
+	else cout << "Khong the mo file du lieu";
 	file.close();
-	// Menu
-	string choice;
+	bool exit = false;
+	// Hiển thị Menu
 	do
 	{
 		cout << "1. Them vat tu vao danh sach" << endl;
@@ -55,7 +42,7 @@ void Menu() {
 		cout << "Hay chon cong viec:" << endl;
 		//
 		int menu;
-		// Menu Choice
+		// Lựa chọn công việc
 		do {
 			try {
 				cout << "User>";
@@ -73,164 +60,49 @@ void Menu() {
 				cout << error;
 			}
 		} while (true);
-		//
+		// Xử lí Menu
 		switch (menu)
 		{
-			case 1: // 1) Thêm vật tư ( Thêm vào file sau đó thêm vào list hiện tại )
+			case 1: // 1) Thêm vật tư
 			{
 				system("cls");
-				cout << "1. Them vat tu vao khong sap xep" << endl;
-				cout << "2. Them vat tu vao co sap xep theo so luong" << endl;
-				cout << "3. Thoat cong viec" << endl;
-				cout << "____________________________________________________________" << endl;
-				//
-				int submenu1;
-				do {
-					try {
-						cout << "User>";
-						cin >> submenu1;
-						if (cin.fail() || submenu1 < 0 || submenu1 > 3) {
-							throw string("Khong hop le , vui long nhap lai! \n");
-						}
-						cin.clear();
-						cin.ignore(10000, '\n');
-						break;
-					}
-					catch (string error) {
-						cin.clear();
-						cin.ignore(10000, '\n');
-						cout << error;
-					}
-				} while (true);
-
-				switch (submenu1) {
-				case 1: // 1.1) Không sắp xếp sau khi thêm
-				{
-					ofstream file;
-					file.open("db.txt", ios::app);
-					if (file.is_open()) {
-						cout << "Nhap vao thong tin vat tu can them" << endl;
-						// Mã vật tư
-						cout << "Nhap vao ma vat tu: ";
-						getline(cin, MaVatTu);
-						MaVatTu = str_replace(MaVatTu, " ", "_");
-						cout << endl;
-						// Tên vật tư
-						cout << "Nhap vao ten vat tu: ";
-						getline(cin, TenVatTu);
-						TenVatTu = str_replace(TenVatTu, " ", "_");
-						cout << endl;
-						// Loại vật tư
-						cout << "Nhap vao loai vat tu: ";
-						getline(cin, LoaiVatTu);
-						LoaiVatTu = str_replace(LoaiVatTu, " ", "_");
-						cout << endl;
-						// Đơn vị giá thành vật tư
-						cout << "Nhap vao don vi gia thanh vat tu: ";
-						getline(cin, DonViTinh);
-						DonViTinh = str_replace(DonViTinh, " ", "_");
-						cout << endl;
-						// Ngày nhập
-						time_t tt;
-						struct tm* ti;
-						time(&tt);
-						ti = localtime(&tt);
-						NgayNhap = str_replace(asctime(ti), " ", "_");
-						NgayNhap = str_replace(NgayNhap, "\n", " ");
-						// Nhà sản xuất vật tư
-						cout << "Nhap vao nha san xuat vat tu: ";
-						getline(cin, NhaSanXuat);
-						NhaSanXuat = str_replace(NhaSanXuat, " ", "_");
-						cout << endl;
-						// Số lượng vật tư
-						do {
-							try {
-								cout << "Nhap vao so luong vat tu:";
-								cin >> SoLuong;
-								if (cin.fail() || SoLuong <= 0) {
-									throw string("Khong hop le , vui long nhap lai! \n");
-								}
-								cin.clear();
-								cin.ignore(10000, '\n');
-								break;
-							}
-							catch (string error) {
-								cin.clear();
-								cin.ignore(10000, '\n');
-								cout << error;
-							}
-						} while (true);
-						// Đơn giá vật tư
-						do {
-							try {
-								cout << "Nhap vao don gia vat tu:";
-								cin >> DonGia;
-								if (cin.fail() || DonGia < 0) {
-									throw string("Khong hop le , vui long nhap lai! \n");
-								}
-								cin.clear();
-								cin.ignore(10000, '\n');
-								break;
-							}
-							catch (string error) {
-								cin.clear();
-								cin.ignore(10000, '\n');
-								cout << error;
-							}
-						} while (true);
-						// Xử lí giá thành
-						if (SoLuong <= 100) {
-							ThanhTien = DonGia * SoLuong;
-						}
-						else if (SoLuong > 100 && SoLuong <= 200) {
-							ThanhTien = ceilf((DonGia * SoLuong) * 0.1);
-						}
-						else {
-							ThanhTien = ceilf((DonGia * SoLuong) * 0.2);
-						}
-						// Thêm vào file
-						file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << NgayNhap << endl;
-						// Thêm vào list
-						A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
-					}
-					file.close();
-					break;
-				}
-				case 2: // 1.2) Sắp xếp theo số lượng sau khi thêm
-				{
+				ofstream file;
+				file.open("db.txt", ios::app);
+				if (file.is_open()) {
 					cout << "Nhap vao thong tin vat tu can them" << endl;
 					// Mã vật tư
 					cout << "Nhap vao ma vat tu: ";
 					getline(cin, MaVatTu);
-					MaVatTu = str_replace(MaVatTu, " ", "_");
-					cout << endl;
+					MaVatTu = helper.str_replace(MaVatTu, " ", "_");
+					MaVatTu = helper.string_lowerCase(MaVatTu);
 					// Tên vật tư
 					cout << "Nhap vao ten vat tu: ";
 					getline(cin, TenVatTu);
-					TenVatTu = str_replace(TenVatTu, " ", "_");
-					cout << endl;
+					TenVatTu = helper.str_replace(TenVatTu, " ", "_");
+					TenVatTu = helper.string_lowerCase(TenVatTu);
 					// Loại vật tư
 					cout << "Nhap vao loai vat tu: ";
 					getline(cin, LoaiVatTu);
-					LoaiVatTu = str_replace(LoaiVatTu, " ", "_");
-					cout << endl;
+					LoaiVatTu = helper.str_replace(LoaiVatTu, " ", "_");
+					LoaiVatTu = helper.string_lowerCase(LoaiVatTu);
 					// Đơn vị giá thành vật tư
 					cout << "Nhap vao don vi gia thanh vat tu: ";
 					getline(cin, DonViTinh);
-					DonViTinh = str_replace(DonViTinh, " ", "_");
-					cout << endl;
-					// Ngày nhập
-					time_t tt;
-					struct tm* ti;
-					time(&tt);
-					ti = localtime(&tt);
-					NgayNhap = str_replace(asctime(ti), " ", "_");
-					NgayNhap = str_replace(NgayNhap, "\n", " ");
+					DonViTinh = helper.str_replace(DonViTinh, " ", "_");
+					DonViTinh = helper.string_lowerCase(DonViTinh);
 					// Nhà sản xuất vật tư
 					cout << "Nhap vao nha san xuat vat tu: ";
 					getline(cin, NhaSanXuat);
-					NhaSanXuat = str_replace(NhaSanXuat, " ", "_");
-					cout << endl;
+					NhaSanXuat = helper.str_replace(NhaSanXuat, " ", "_");
+					NhaSanXuat = helper.string_lowerCase(NhaSanXuat);
+					// Ngày nhập
+					time_t rawtime;
+					struct tm* timeinfo;
+					char Date[80];
+					time(&rawtime);
+					timeinfo = localtime(&rawtime);
+					strftime(Date, 80, "%F", timeinfo); // In theo định dạng 2019-12-25
+					NgayNhap = Date;
 					// Số lượng vật tư
 					do {
 						try {
@@ -267,36 +139,31 @@ void Menu() {
 							cout << error;
 						}
 					} while (true);
-					// Xử lí giá thành
+					// Xử lí thành tiền
 					if (SoLuong <= 100) {
 						ThanhTien = DonGia * SoLuong;
 					}
 					else if (SoLuong > 100 && SoLuong <= 200) {
-						ThanhTien = ceilf((DonGia * SoLuong) * 0.1);
+						ThanhTien = round(DonGia * SoLuong * 0.9);
 					}
 					else {
-						ThanhTien = ceilf((DonGia * SoLuong) * 0.2);
+						ThanhTien = round(DonGia * SoLuong * 0.75);
 					}
+					// Thêm vào file
+					file << MaVatTu << " " << TenVatTu << " " << LoaiVatTu << " " << DonViTinh << " " << NhaSanXuat << " " << SoLuong << " " << DonGia << " " << ThanhTien << " " << NgayNhap << endl;
 					// Thêm vào list
 					A.Them(MaVatTu, TenVatTu, LoaiVatTu, DonViTinh, NgayNhap, NhaSanXuat, SoLuong, DonGia, ThanhTien);
-					A.SapXepTheoSoLuong(ascending);
-					A.GhiVaoFile();
-					break;
 				}
-				case 3: // 1.3) Thoát công việc
-				{
-					break;
-				}
-				}
+				file.close();
 				break;
 			}
-			case 2: // 2) Hiển thị vật tư ( hiển thị từ list )
+			case 2: // 2) Hiển thị vật tư ( Hiển thị từ mảng )
 			{
 				system("cls");
 				A.HienThiList();
 				break;
 			}
-			case 3: // 3) Xóa vật tư ( Xóa từ list rồi ghi vào file - Chưa xong )
+			case 3: // 3) Xóa vật tư ( Xóa từ mảng rồi ghi vào file )
 			{
 				system("cls");
 				cout << "Lua chon tieu chi de xoa vat tu: " << endl;
@@ -304,7 +171,7 @@ void Menu() {
 				cout << "2. Xoa vat tu theo ten vat tu" << endl;
 				cout << "3. Xoa vat tu theo loai vat tu" << endl;
 				cout << "4. Xoa vat tu co so luong lon hon 100" << endl;
-				cout << "5. Thoat cong viec" << endl;
+				cout << "5. Thoat" << endl;
 				cout << "____________________________________________________________" << endl;
 				int submenu2;
 				// Sub menu choice 2
@@ -331,7 +198,8 @@ void Menu() {
 						string Ma;
 						cout << "Hay nhap vao ma vat tu ban muon xoa: ";
 						getline(cin, Ma);
-						Ma = str_replace(Ma, " ", "_");
+						Ma = helper.str_replace(Ma, " ", "_");
+						Ma = helper.string_lowerCase(Ma);
 						A.XoaTheoMa(Ma);
 						A.GhiVaoFile();
 						break;
@@ -341,7 +209,8 @@ void Menu() {
 						string Ten;
 						cout << "Hay nhap vao ten cua vat tu ban muon xoa: ";
 						getline(cin, Ten);
-						Ten = str_replace(Ten, " ", "_");
+						Ten = helper.str_replace(Ten, " ", "_");
+						Ten = helper.string_lowerCase(Ten);
 						A.XoaTheoTen(Ten);
 						A.GhiVaoFile();
 						//
@@ -352,7 +221,8 @@ void Menu() {
 						string Loai;
 						cout << "Hay nhap vao loai vat tu ban muon xoa: ";
 						getline(cin, Loai);
-						Loai = str_replace(Loai, " ", "_");
+						Loai = helper.str_replace(Loai, " ", "_");
+						Loai = helper.string_lowerCase(Loai);
 						A.XoaTheoLoai(Loai);
 						A.GhiVaoFile();
 						//
@@ -366,19 +236,20 @@ void Menu() {
 					}
 					case 5: // 3.5) Thoát công việc
 					{
+						exit = true;
 						break;
 					}
 				}
 				break;
 			}
-			case 4: // 4) Tìm kiếm vật tư ( Tìm kiếm trong list )
+			case 4: // 4) Tìm kiếm vật tư ( Tìm kiếm trong mảng )
 			{
 				system("cls");
 				cout << "Lua chon tieu chi de tim kiem vat tu: " << endl;
 				cout << "1. Tim kiem vat tu theo ma vat tu" << endl;
 				cout << "2. Tim kiem vat tu theo ten vat tu" << endl;
 				cout << "3. Tim kiem vat tu theo loai vat tu" << endl;
-				cout << "4. Thoat cong viec" << endl;
+				cout << "4. Thoat" << endl;
 				cout << "____________________________________________________________" << endl;
 				int submenu3;
 				// Sub Menu 3 Choice
@@ -405,7 +276,8 @@ void Menu() {
 						string Ma;
 						cout << "Hay nhap vao ma vat tu ban muon tim: ";
 						getline(cin, Ma);
-						Ma = str_replace(Ma, " ", "_");
+						Ma = helper.str_replace(Ma, " ", "_");
+						Ma = helper.string_lowerCase(Ma);
 						A.TimKiemTheoMa(Ma);
 						break;
 					}
@@ -414,7 +286,8 @@ void Menu() {
 						string Ten;
 						cout << "Hay nhap vao ten cua vat tu ban muon tim: ";
 						getline(cin, Ten);
-						Ten = str_replace(Ten, " ", "_");
+						Ten = helper.str_replace(Ten, " ", "_");
+						Ten = helper.string_lowerCase(Ten);
 						A.TimKiemTheoTen(Ten);
 						break;
 					}
@@ -423,25 +296,27 @@ void Menu() {
 						string Loai;
 						cout << "Hay nhap vao loai vat tu ban muon tim: ";
 						getline(cin, Loai);
-						Loai = str_replace(Loai, " ", "_");
+						Loai = helper.str_replace(Loai, " ", "_");
+						Loai = helper.string_lowerCase(Loai);
 						A.TimKiemTheoLoai(Loai);
 						break;
 					}
 					case 4: // 4.4) Thoát công việc
 					{
+						exit = true;
 						break;
 					}
 				}
 				break;
 			}
-			case 5: // 5) Sắp xếp vật tư ( Sắp xếp từ list rồi ghi list vào file )
+			case 5: // 5) Sắp xếp vật tư ( Sắp xếp trong mảng rồi ghi vào file )
 			{
 				system("cls");
 				cout << "Lua chon tieu chi can sap xep: " << endl;
 				cout << "1. Sap xep vat tu theo so luong vat tu" << endl;
 				cout << "2. Sap xep vat tu theo don gia vat tu" << endl;
 				cout << "3. Sap xep vat tu theo thanh tien vat tu" << endl;
-				cout << "4. Thoat cong viec" << endl;
+				cout << "4. Thoat" << endl;
 				cout << "____________________________________________________________" << endl;
 				cout << "Hay chon cong viec:" << endl;
 				int submenu4;
@@ -470,7 +345,7 @@ void Menu() {
 					cout << "Lua chon thu tu sap xep: " << endl;
 					cout << "1. Theo thu tu tang dan" << endl;
 					cout << "2. Theo thu tu giam dan" << endl;
-					cout << "3. Thoat cong viec" << endl;
+					cout << "3. Thoat" << endl;
 					cout << "____________________________________________________________" << endl;
 					cout << "Hay chon cong viec:" << endl;
 					int innermenu1;
@@ -507,6 +382,7 @@ void Menu() {
 						}
 						case 3: // 5.1.3) Thoát công việc
 						{
+							exit = true;
 							break;
 						}
 					}
@@ -518,7 +394,7 @@ void Menu() {
 					cout << "Lua chon thu tu sap xep: " << endl;
 					cout << "1. Theo thu tu tang dan" << endl;
 					cout << "2. Theo thu tu giam dan" << endl;
-					cout << "3. Thoat cong viec" << endl;
+					cout << "3. Thoat" << endl;
 					cout << "____________________________________________________________" << endl;
 					cout << "Hay chon cong viec:" << endl;
 					int innermenu2;
@@ -555,6 +431,7 @@ void Menu() {
 						}
 						case 3: // 5.2.3) Thoát công việc
 						{
+							exit = true;
 							break;
 						}
 					}
@@ -566,7 +443,7 @@ void Menu() {
 					cout << "Lua chon thu tu sap xep: " << endl;
 					cout << "1. Theo thu tu tang dan" << endl;
 					cout << "2. Theo thu tu giam dan" << endl;
-					cout << "3. Thoat cong viec" << endl;
+					cout << "3. Thoat" << endl;
 					cout << "____________________________________________________________" << endl;
 					cout << "Hay chon cong viec:" << endl;
 					int innermenu3;
@@ -603,6 +480,7 @@ void Menu() {
 						}
 						case 3: // 5.3.3) Thoát công việc
 						{
+							exit = true;
 							break;
 						}
 					}
@@ -610,26 +488,26 @@ void Menu() {
 				}
 				case 4: // 5.4) Thoát công việc
 				{
+					exit = true;
 					break;
 				}
 				}
 				break;
 			}
+			case 6: // 6) Thoát chương trình
+			{
+				exit = true;
+				break;
+			}
 		}
-		// Xử lí tiếp tục công việc
-		do {
-			cout << "Ban co muon tiep tuc cong viec hay khong ( Y/N )" << endl;
-			cout << "User>";
-			getline(cin, choice);
-		} while (choice != "Y" && choice != "N" && choice != "y" && choice != "n");
-		if (choice == "Y" || choice == "y") {
+		if (exit == false) {
+			cout << endl;
+			system("pause");
 			system("cls");
 		}
-		else {
-			break;
-		}
-	} while (choice == "Y" || choice == "y");
+	} while (exit == false);
 }
+// Hàm main
 int main() {
 	Menu();
 	return 0;
