@@ -74,27 +74,22 @@ void Menu() {
 					cout << "Nhap vao ma vat tu: ";
 					getline(cin, MaVatTu);
 					MaVatTu = helper.str_replace(MaVatTu, " ", "_");
-					MaVatTu = helper.string_lowerCase(MaVatTu);
 					// Tên vật tư
 					cout << "Nhap vao ten vat tu: ";
 					getline(cin, TenVatTu);
 					TenVatTu = helper.str_replace(TenVatTu, " ", "_");
-					TenVatTu = helper.string_lowerCase(TenVatTu);
 					// Loại vật tư
 					cout << "Nhap vao loai vat tu: ";
 					getline(cin, LoaiVatTu);
 					LoaiVatTu = helper.str_replace(LoaiVatTu, " ", "_");
-					LoaiVatTu = helper.string_lowerCase(LoaiVatTu);
 					// Đơn vị giá thành vật tư
 					cout << "Nhap vao don vi gia thanh vat tu: ";
 					getline(cin, DonViTinh);
 					DonViTinh = helper.str_replace(DonViTinh, " ", "_");
-					DonViTinh = helper.string_lowerCase(DonViTinh);
 					// Nhà sản xuất vật tư
 					cout << "Nhap vao nha san xuat vat tu: ";
 					getline(cin, NhaSanXuat);
 					NhaSanXuat = helper.str_replace(NhaSanXuat, " ", "_");
-					NhaSanXuat = helper.string_lowerCase(NhaSanXuat);
 					// Ngày nhập
 					time_t rawtime;
 					struct tm* timeinfo;
@@ -171,7 +166,6 @@ void Menu() {
 				cout << "2. Xoa vat tu theo ten vat tu" << endl;
 				cout << "3. Xoa vat tu theo loai vat tu" << endl;
 				cout << "4. Xoa vat tu co so luong lon hon 100" << endl;
-				cout << "5. Thoat" << endl;
 				cout << "____________________________________________________________" << endl;
 				int submenu2;
 				// Sub menu choice 2
@@ -179,7 +173,7 @@ void Menu() {
 					try {
 						cout << "User>";
 						cin >> submenu2;
-						if (cin.fail() || submenu2 < 0 || submenu2 > 5) {
+						if (cin.fail() || submenu2 < 0 || submenu2 > 4) {
 							throw string("Khong hop le , vui long nhap lai! \n");
 						}
 						cin.clear();
@@ -199,7 +193,6 @@ void Menu() {
 						cout << "Hay nhap vao ma vat tu ban muon xoa: ";
 						getline(cin, Ma);
 						Ma = helper.str_replace(Ma, " ", "_");
-						Ma = helper.string_lowerCase(Ma);
 						A.XoaTheoMa(Ma);
 						A.GhiVaoFile();
 						break;
@@ -210,7 +203,6 @@ void Menu() {
 						cout << "Hay nhap vao ten cua vat tu ban muon xoa: ";
 						getline(cin, Ten);
 						Ten = helper.str_replace(Ten, " ", "_");
-						Ten = helper.string_lowerCase(Ten);
 						A.XoaTheoTen(Ten);
 						A.GhiVaoFile();
 						//
@@ -222,7 +214,6 @@ void Menu() {
 						cout << "Hay nhap vao loai vat tu ban muon xoa: ";
 						getline(cin, Loai);
 						Loai = helper.str_replace(Loai, " ", "_");
-						Loai = helper.string_lowerCase(Loai);
 						A.XoaTheoLoai(Loai);
 						A.GhiVaoFile();
 						//
@@ -232,11 +223,6 @@ void Menu() {
 					{
 						A.XoaTren100();
 						A.GhiVaoFile();
-						break;
-					}
-					case 5: // 3.5) Thoát công việc
-					{
-						exit = true;
 						break;
 					}
 				}
@@ -249,7 +235,6 @@ void Menu() {
 				cout << "1. Tim kiem vat tu theo ma vat tu" << endl;
 				cout << "2. Tim kiem vat tu theo ten vat tu" << endl;
 				cout << "3. Tim kiem vat tu theo loai vat tu" << endl;
-				cout << "4. Thoat" << endl;
 				cout << "____________________________________________________________" << endl;
 				int submenu3;
 				// Sub Menu 3 Choice
@@ -257,7 +242,7 @@ void Menu() {
 					try {
 						cout << "User>";
 						cin >> submenu3;
-						if (cin.fail() || submenu3 < 0 || submenu3 > 4) {
+						if (cin.fail() || submenu3 < 0 || submenu3 > 3) {
 							throw string("Khong hop le , vui long nhap lai! \n");
 						}
 						cin.clear();
@@ -277,7 +262,6 @@ void Menu() {
 						cout << "Hay nhap vao ma vat tu ban muon tim: ";
 						getline(cin, Ma);
 						Ma = helper.str_replace(Ma, " ", "_");
-						Ma = helper.string_lowerCase(Ma);
 						A.TimKiemTheoMa(Ma);
 						break;
 					}
@@ -287,7 +271,6 @@ void Menu() {
 						cout << "Hay nhap vao ten cua vat tu ban muon tim: ";
 						getline(cin, Ten);
 						Ten = helper.str_replace(Ten, " ", "_");
-						Ten = helper.string_lowerCase(Ten);
 						A.TimKiemTheoTen(Ten);
 						break;
 					}
@@ -297,13 +280,7 @@ void Menu() {
 						cout << "Hay nhap vao loai vat tu ban muon tim: ";
 						getline(cin, Loai);
 						Loai = helper.str_replace(Loai, " ", "_");
-						Loai = helper.string_lowerCase(Loai);
 						A.TimKiemTheoLoai(Loai);
-						break;
-					}
-					case 4: // 4.4) Thoát công việc
-					{
-						exit = true;
 						break;
 					}
 				}
@@ -316,7 +293,6 @@ void Menu() {
 				cout << "1. Sap xep vat tu theo so luong vat tu" << endl;
 				cout << "2. Sap xep vat tu theo don gia vat tu" << endl;
 				cout << "3. Sap xep vat tu theo thanh tien vat tu" << endl;
-				cout << "4. Thoat" << endl;
 				cout << "____________________________________________________________" << endl;
 				cout << "Hay chon cong viec:" << endl;
 				int submenu4;
@@ -325,7 +301,7 @@ void Menu() {
 					try {
 						cout << "User>";
 						cin >> submenu4;
-						if (cin.fail() || submenu4 < 0 || submenu4 > 4) {
+						if (cin.fail() || submenu4 < 0 || submenu4 > 3) {
 							throw string("Khong hop le , vui long nhap lai! \n");
 						}
 						cin.clear();
@@ -345,7 +321,6 @@ void Menu() {
 					cout << "Lua chon thu tu sap xep: " << endl;
 					cout << "1. Theo thu tu tang dan" << endl;
 					cout << "2. Theo thu tu giam dan" << endl;
-					cout << "3. Thoat" << endl;
 					cout << "____________________________________________________________" << endl;
 					cout << "Hay chon cong viec:" << endl;
 					int innermenu1;
@@ -354,7 +329,7 @@ void Menu() {
 						try {
 							cout << "User>";
 							cin >> innermenu1;
-							if (cin.fail() || innermenu1 < 0 || innermenu1 > 3) {
+							if (cin.fail() || innermenu1 < 0 || innermenu1 > 2) {
 								throw string("Khong hop le , vui long nhap lai! \n");
 							}
 							cin.clear();
@@ -394,7 +369,6 @@ void Menu() {
 					cout << "Lua chon thu tu sap xep: " << endl;
 					cout << "1. Theo thu tu tang dan" << endl;
 					cout << "2. Theo thu tu giam dan" << endl;
-					cout << "3. Thoat" << endl;
 					cout << "____________________________________________________________" << endl;
 					cout << "Hay chon cong viec:" << endl;
 					int innermenu2;
@@ -403,7 +377,7 @@ void Menu() {
 						try {
 							cout << "User>";
 							cin >> innermenu2;
-							if (cin.fail() || innermenu2 < 0 || innermenu2 > 3) {
+							if (cin.fail() || innermenu2 < 0 || innermenu2 > 2) {
 								throw string("Khong hop le , vui long nhap lai! \n");
 							}
 							cin.clear();
@@ -443,7 +417,6 @@ void Menu() {
 					cout << "Lua chon thu tu sap xep: " << endl;
 					cout << "1. Theo thu tu tang dan" << endl;
 					cout << "2. Theo thu tu giam dan" << endl;
-					cout << "3. Thoat" << endl;
 					cout << "____________________________________________________________" << endl;
 					cout << "Hay chon cong viec:" << endl;
 					int innermenu3;
@@ -452,7 +425,7 @@ void Menu() {
 						try {
 							cout << "User>";
 							cin >> innermenu3;
-							if (cin.fail() || innermenu3 < 0 || innermenu3 > 3) {
+							if (cin.fail() || innermenu3 < 0 || innermenu3 > 2) {
 								throw string("Khong hop le , vui long nhap lai! \n");
 							}
 							cin.clear();
@@ -484,11 +457,6 @@ void Menu() {
 							break;
 						}
 					}
-					break;
-				}
-				case 4: // 5.4) Thoát công việc
-				{
-					exit = true;
 					break;
 				}
 				}

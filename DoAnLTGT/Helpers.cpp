@@ -13,13 +13,3 @@ string Helpers::str_replace(string input, string pre, string pos) {
 	}
 	return fixed;
 }
-char Helpers::char_lowerCase(char input) {
-	if (input >= 'A' && input <= 'Z') return input + 32;
-	return input;
-}
-string Helpers::string_lowerCase(string input) {
-	for (int i = 0; i < input.size(); i++) {
-		input[i] = this->char_lowerCase(input[i]);
-	}
-	return input;
-}

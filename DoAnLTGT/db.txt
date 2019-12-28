@@ -1,3 +1,0 @@
-ah-290 but_chi_kim but viet_nam_dong thien_long 278 29000 6046500 2019-12-25
-bk-200 but_bi_mau but viet_nam_dong thien_long 90 30000 2700000 2019-12-25
-ah-290 but_muc but dollar winston_industries 200 15 2700 2019-12-25

@@ -383,28 +383,46 @@ void List::TimKiemTheoLoai(string Loai) {
 
 // Hàm sắp xếp
 void List::SapXepTheoDonGia(bool (*Func)(long long int, long long int)) {
-	for (int i = 0; i < this->PhanTu-1; i++) {
-		for (int j = i + 1; j < this->PhanTu; j++) {
-			if (Func((this->DanhSachVatTu + i)->LayDonGia(), (this->DanhSachVatTu + j)->LayDonGia())) {
-				HoanVi(*(this->DanhSachVatTu+i),*(this->DanhSachVatTu+j));
+	// Trường hợp list không có phần tử nào để sắp xếp
+	if (this->PhanTu == 0) {
+		cout << "Khong co phan tu nao de sap xep";
+	}
+	else {
+		for (int i = 0; i < this->PhanTu-1; i++) {
+			for (int j = i + 1; j < this->PhanTu; j++) {
+				if (Func((this->DanhSachVatTu + i)->LayDonGia(), (this->DanhSachVatTu + j)->LayDonGia())) {
+					HoanVi(*(this->DanhSachVatTu+i),*(this->DanhSachVatTu+j));
+				}
 			}
 		}
 	}
 }
 void List::SapXepTheoThanhTien(bool(*Func)(long long int, long long int)) {
-	for (int i = 0; i < this->PhanTu - 1; i++) {
-		for (int j = i + 1; j < this->PhanTu; j++) {
-			if (Func((this->DanhSachVatTu + i)->LayThanhTien(), (this->DanhSachVatTu + j)->LayThanhTien())) {
-				HoanVi(*(this->DanhSachVatTu + i), *(this->DanhSachVatTu + j));
+	// Trường hợp list không có phần tử nào để sắp xếp
+	if (this->PhanTu == 0) {
+		cout << "Khong co phan tu nao de sap xep";
+	}
+	else {
+		for (int i = 0; i < this->PhanTu - 1; i++) {
+			for (int j = i + 1; j < this->PhanTu; j++) {
+				if (Func((this->DanhSachVatTu + i)->LayThanhTien(), (this->DanhSachVatTu + j)->LayThanhTien())) {
+					HoanVi(*(this->DanhSachVatTu + i), *(this->DanhSachVatTu + j));
+				}
 			}
 		}
 	}
 }
-void List::SapXepTheoSoLuong(bool(*Func)(long long int,long long int)) {
-	for (int i = 0; i < this->PhanTu - 1; i++) {
-		for (int j = i + 1; j < this->PhanTu; j++) {
-			if (Func((this->DanhSachVatTu + i)->LaySoLuong(),(this->DanhSachVatTu + j)->LaySoLuong())) {
-				HoanVi(*(this->DanhSachVatTu + i), *(this->DanhSachVatTu + j));
+void List::SapXepTheoSoLuong(bool(*Func)(long long int, long long int)) {
+	// Trường hợp list không có phần tử nào để sắp xếp
+	if (this->PhanTu == 0) {
+		cout << "Khong co phan tu nao de sap xep";
+	}
+	else {
+		for (int i = 0; i < this->PhanTu - 1; i++) {
+			for (int j = i + 1; j < this->PhanTu; j++) {
+				if (Func((this->DanhSachVatTu + i)->LaySoLuong(), (this->DanhSachVatTu + j)->LaySoLuong())) {
+					HoanVi(*(this->DanhSachVatTu + i), *(this->DanhSachVatTu + j));
+				}
 			}
 		}
 	}
@@ -442,4 +460,3 @@ void List::GhiVaoFile() {
 int HienThiElement(List& p) {
 	return p.PhanTu;
 }
-//  Hàm replace
