@@ -1,4 +1,5 @@
 ﻿#include "List.h"
+Helpers helper2;
 // Hàm hoán vị
 void HoanVi(VatTu& VT1, VatTu& VT2) {
 	VatTu temp;
@@ -31,15 +32,15 @@ List::List(VatTu VT, int PhanTu)
 }
 // Hàm hiển thị
 void List::HienThiList() {
-	cout << " _________________________________________________________________________________________________________________________________________________________" << endl;
+	cout << " _____________________________________________________________________________________________________________________________________________________________________________" << endl;
 	cout << "|" << setw(5) << "STT" << "|";
 	cout << setw(15) << "Ma Vat Tu" << "|";
 	cout << setw(20) << "Ten Vat Tu" << "|";
 	cout << setw(20) << "Loai Vat Tu" << "|";
 	cout << setw(25) << "Nha San Xuat" << "|";
 	cout << setw(10) << "So Luong" << "|";
-	cout << setw(10) << "Don Gia" << "|";
-	cout << setw(10) << "Thanh Tien" << "|";
+	cout << setw(20) << "Don Gia" << "|";
+	cout << setw(20) << "Thanh Tien" << "|";
 	cout << setw(30) << "Ngay nhap" << "|" << endl;
 	cout << "|_____|";
 	cout << setw(15) << "_______________|";
@@ -47,8 +48,8 @@ void List::HienThiList() {
 	cout << setw(20) << "____________________|";
 	cout << setw(25) << "_________________________|";
 	cout << setw(10) << "__________|";
-	cout << setw(10) << "__________|";
-	cout << setw(10) << "__________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(20) << "____________________|";
 	cout << setw(30) << "______________________________|";
 	cout << endl;
  	for (int i = 0; i < this->PhanTu; i++) {
@@ -60,8 +61,8 @@ void List::HienThiList() {
 		cout << setw(20) << "____________________|";
 		cout << setw(25) << "_________________________|";
 		cout << setw(10) << "__________|";
-		cout << setw(10) << "__________|";
-		cout << setw(10) << "__________|";
+		cout << setw(20) << "____________________|";
+		cout << setw(20) << "____________________|";
 		cout << setw(30) << "______________________________|";
 		cout << endl;
 	}
@@ -111,7 +112,7 @@ void List::XoaTheoMa(string Ma) {
 		}
 	}
 	if (DeleteCount == 0) {
-		cout << "Khong co phan tu nao phu hop de xoa" << endl;
+		cout << endl << endl << "Khong tim thay vat tu nao co ma '" << helper2.str_replace(Ma, "_", " ") << "' de xoa" << endl;
 	}
 	else {
 		cout << "Da xoa " << DeleteCount << " vat tu" << endl;
@@ -145,7 +146,7 @@ void List::XoaTheoTen(string Ten) {
 		}
 	}
 	if (DeleteCount == 0) {
-		cout << "Khong co phan tu nao phu hop de xoa" << endl;
+		cout << endl << endl << "Khong tim thay vat tu nao co ten '" << helper2.str_replace(Ten, "_", " ") << "' de xoa" << endl;
 	}
 	else {
 		cout << "Da xoa " << DeleteCount << " vat tu" << endl;
@@ -179,7 +180,7 @@ void List::XoaTheoLoai(string Loai) {
 		}
 	}
 	if (DeleteCount == 0) {
-		cout << "Khong co phan tu nao phu hop de xoa" << endl;
+		cout << endl << endl << "Khong tim thay vat tu nao co loai '" << helper2.str_replace(Loai, "_", " ") << "' de xoa" << endl;
 	}
 	else {
 		cout << "Da xoa " << DeleteCount << " vat tu" << endl;
@@ -213,7 +214,7 @@ void List::XoaTren100() {
 		}
 	}
 	if (DeleteCount == 0) {
-		cout << "Khong co phan tu nao phu hop de xoa" << endl;
+		cout << "Khong co phan tu nao phu hop voi so luong lon hon 100 de xoa" << endl;
 	}
 	else {
 		cout << "Da xoa " << DeleteCount << " vat tu" << endl;
@@ -241,15 +242,15 @@ void List::XoaTren100() {
 // Hàm tìm kiếm
 void List::TimKiemTheoMa(string Ma) {
 	int found = 0;
-	cout << " _________________________________________________________________________________________________________________________________________________________" << endl;
+	cout << " _____________________________________________________________________________________________________________________________________________________________________________" << endl;
 	cout << "|" << setw(5) << "STT" << "|";
 	cout << setw(15) << "Ma Vat Tu" << "|";
 	cout << setw(20) << "Ten Vat Tu" << "|";
 	cout << setw(20) << "Loai Vat Tu" << "|";
 	cout << setw(25) << "Nha San Xuat" << "|";
 	cout << setw(10) << "So Luong" << "|";
-	cout << setw(10) << "Don Gia" << "|";
-	cout << setw(10) << "Thanh Tien" << "|";
+	cout << setw(20) << "Don Gia" << "|";
+	cout << setw(20) << "Thanh Tien" << "|";
 	cout << setw(30) << "Ngay nhap" << "|" << endl;
 	cout << "|_____|";
 	cout << setw(15) << "_______________|";
@@ -257,8 +258,8 @@ void List::TimKiemTheoMa(string Ma) {
 	cout << setw(20) << "____________________|";
 	cout << setw(25) << "_________________________|";
 	cout << setw(10) << "__________|";
-	cout << setw(10) << "__________|";
-	cout << setw(10) << "__________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(20) << "____________________|";
 	cout << setw(30) << "______________________________|";
 	cout << endl;
 	for (int i = 0; i < this->PhanTu; i++) {
@@ -271,8 +272,8 @@ void List::TimKiemTheoMa(string Ma) {
 			cout << setw(20) << "____________________|";
 			cout << setw(25) << "_________________________|";
 			cout << setw(10) << "__________|";
-			cout << setw(10) << "__________|";
-			cout << setw(10) << "__________|";
+			cout << setw(20) << "____________________|";
+			cout << setw(20) << "____________________|";
 			cout << setw(30) << "______________________________|";
 			cout << endl;
 			found++;
@@ -280,7 +281,7 @@ void List::TimKiemTheoMa(string Ma) {
 	}
 	if (found == 0) {
 		system("cls");
-		cout << endl << endl << "Khong tim thay vat tu nao co ma da nhap" << endl;
+		cout << endl << endl << "Khong tim thay vat tu nao co ma '" << helper2.str_replace(Ma, "_", " ") << "'" << endl;
 	}
 	else {
 		cout << "So vat tu tim duoc: " << found << " vat tu" << endl;
@@ -288,15 +289,15 @@ void List::TimKiemTheoMa(string Ma) {
 }
 void List::TimKiemTheoTen(string Ten) {
 	int found = 0;
-	cout << " _________________________________________________________________________________________________________________________________________________________" << endl;
+	cout << " _____________________________________________________________________________________________________________________________________________________________________________" << endl;
 	cout << "|" << setw(5) << "STT" << "|";
 	cout << setw(15) << "Ma Vat Tu" << "|";
 	cout << setw(20) << "Ten Vat Tu" << "|";
 	cout << setw(20) << "Loai Vat Tu" << "|";
 	cout << setw(25) << "Nha San Xuat" << "|";
 	cout << setw(10) << "So Luong" << "|";
-	cout << setw(10) << "Don Gia" << "|";
-	cout << setw(10) << "Thanh Tien" << "|";
+	cout << setw(20) << "Don Gia" << "|";
+	cout << setw(20) << "Thanh Tien" << "|";
 	cout << setw(30) << "Ngay nhap" << "|" << endl;
 	cout << "|_____|";
 	cout << setw(15) << "_______________|";
@@ -304,8 +305,8 @@ void List::TimKiemTheoTen(string Ten) {
 	cout << setw(20) << "____________________|";
 	cout << setw(25) << "_________________________|";
 	cout << setw(10) << "__________|";
-	cout << setw(10) << "__________|";
-	cout << setw(10) << "__________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(20) << "____________________|";
 	cout << setw(30) << "______________________________|";
 	cout << endl;
 	for (int i = 0; i < this->PhanTu; i++) {
@@ -318,8 +319,8 @@ void List::TimKiemTheoTen(string Ten) {
 			cout << setw(20) << "____________________|";
 			cout << setw(25) << "_________________________|";
 			cout << setw(10) << "__________|";
-			cout << setw(10) << "__________|";
-			cout << setw(10) << "__________|";
+			cout << setw(20) << "____________________|";
+			cout << setw(20) << "____________________|";
 			cout << setw(30) << "______________________________|";
 			cout << endl;
 			found++;
@@ -327,7 +328,7 @@ void List::TimKiemTheoTen(string Ten) {
 	}
 	if (found == 0) {
 		system("cls");
-		cout << "Khong tim thay vat tu nao co ma da nhap" << endl;
+		cout << endl << endl << "Khong tim thay vat tu nao co ten '" << helper2.str_replace(Ten, "_", " ") << "'" << endl;
 	}
 	else {
 		cout << "So vat tu tim duoc: " << found << " vat tu" << endl;
@@ -335,15 +336,15 @@ void List::TimKiemTheoTen(string Ten) {
 }
 void List::TimKiemTheoLoai(string Loai) {
 	int found = 0;
-	cout << " _________________________________________________________________________________________________________________________________________________________" << endl;
+	cout << " _____________________________________________________________________________________________________________________________________________________________________________" << endl;
 	cout << "|" << setw(5) << "STT" << "|";
 	cout << setw(15) << "Ma Vat Tu" << "|";
 	cout << setw(20) << "Ten Vat Tu" << "|";
 	cout << setw(20) << "Loai Vat Tu" << "|";
 	cout << setw(25) << "Nha San Xuat" << "|";
 	cout << setw(10) << "So Luong" << "|";
-	cout << setw(10) << "Don Gia" << "|";
-	cout << setw(10) << "Thanh Tien" << "|";
+	cout << setw(20) << "Don Gia" << "|";
+	cout << setw(20) << "Thanh Tien" << "|";
 	cout << setw(30) << "Ngay nhap" << "|" << endl;
 	cout << "|_____|";
 	cout << setw(15) << "_______________|";
@@ -351,8 +352,8 @@ void List::TimKiemTheoLoai(string Loai) {
 	cout << setw(20) << "____________________|";
 	cout << setw(25) << "_________________________|";
 	cout << setw(10) << "__________|";
-	cout << setw(10) << "__________|";
-	cout << setw(10) << "__________|";
+	cout << setw(20) << "____________________|";
+	cout << setw(20) << "____________________|";
 	cout << setw(30) << "______________________________|";
 	cout << endl;
 	for (int i = 0; i < this->PhanTu; i++) {
@@ -365,8 +366,8 @@ void List::TimKiemTheoLoai(string Loai) {
 			cout << setw(20) << "____________________|";
 			cout << setw(25) << "_________________________|";
 			cout << setw(10) << "__________|";
-			cout << setw(10) << "__________|";
-			cout << setw(10) << "__________|";
+			cout << setw(20) << "____________________|";
+			cout << setw(20) << "____________________|";
 			cout << setw(30) << "______________________________|";
 			cout << endl;
 			found++;
@@ -374,7 +375,7 @@ void List::TimKiemTheoLoai(string Loai) {
 	}
 	if (found == 0) {
 		system("cls");
-		cout << "Khong tim thay vat tu nao co ma da nhap" << endl;
+		cout << endl << endl << "Khong tim thay vat tu nao co loai '" << helper2.str_replace(Loai, "_", " ") << "'" << endl;
 	}
 	else {
 		cout << "So vat tu tim duoc: " << found << " vat tu" << endl;

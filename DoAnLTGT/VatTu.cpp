@@ -71,8 +71,8 @@ void VatTu::HienThiVatTu()
 	cout << setw(20) << helper.str_replace(LoaiVatTu, "_", " ") << "|";
 	cout << setw(25) << helper.str_replace(NhaSanXuat, "_", " ") << "|";
 	cout << setw(10) << SoLuong << "|";
-	cout << setw(10) << DonGia << "|";
-	cout << setw(10) << ThanhTien << "|";
+	cout << setw(20) << DonGia << "|";
+	cout << setw(20) << ThanhTien << "|";
 	cout << setw(30) << NgayNhap << "|" << endl;
 }
 

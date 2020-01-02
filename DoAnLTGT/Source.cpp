@@ -63,7 +63,7 @@ void Menu() {
 		// Xử lí Menu
 		switch (menu)
 		{
-			case 1: // 1) Thêm vật tư
+			case 1: // 1) Thêm vật tư ( Thêm vào mảng + file )
 			{
 				system("cls");
 				ofstream file;

@@ -1,0 +1,8 @@
+AH-250 But_chi But Viet_Nam_Dong Thien_Long 80 15000 1200000 2020-01-02
+BK-802 But_mau But Viet_Nam_Dong Thien_Long 140 12000 1512000 2020-01-02
+VEG-35 Tivi Do_gia_dung Dollars LG 250 3500 656250 2020-01-02
+MOM-70 Laptop Do_dien_tu Viet_Nam_Dong Dell 350 20000000 5250000000 2020-01-02
+BBC-89 Bo_ban_ghe Do_gia_dung Viet_Nam_Dong Gia_Long 900 5000000 3375000000 2020-01-02
+BUS-20 Light_Saber Do_choi_tre_em Viet_Nam_Dong Mabel_Toys 87 56500 4915500 2020-01-02
+JK-650 Mac_Book_Pro Do_dien_tu Dollars Apple 5 10000 50000 2020-01-02
+NK-250 Quat_tran Do_gia_dung Viet_Nam_Dong Gia_Long 478 1500000 537750000 2020-01-02
